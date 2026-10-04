@@ -108,7 +108,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   letter-spacing: 0.02em;
   transform: skew(var(--skew));
 }
-.plate-white { background: var(--white); color: var(--blue); }
 
 .btn {
   display: inline-block;
@@ -128,8 +127,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn:hover { transform: skew(var(--skew)) translateY(3px); box-shadow: 0 3px 0 var(--blue-deep); }
 .btn-line { background: var(--white); color: var(--blue); box-shadow: inset 0 0 0 2px var(--blue), 0 6px 0 var(--mist); }
 .btn-line:hover { box-shadow: inset 0 0 0 2px var(--blue), 0 3px 0 var(--mist); }
-.btn-white { background: var(--white); color: var(--blue); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18); }
-.btn-white:hover { box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18); }
 
 .section { padding: 110px max(32px, calc((100vw - 1160px) / 2)) 120px max(250px, calc((100vw - 1160px) / 2)); }
 .title { margin-bottom: 44px; }
@@ -289,6 +286,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .profile-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; align-items: start; }
 .profile-name { margin: 18px 0 10px; font-family: var(--display); font-size: clamp(48px, 6vw, 80px); line-height: 1.05; }
 .profile-role { font-family: var(--display); color: var(--blue); }
+.profile-photo { width: 100%; max-width: 340px; height: auto; margin-top: 28px; border-radius: 10px; box-shadow: 0 0 0 1px var(--line), 12px 12px 0 var(--mist); }
+.profile-contact { margin: 36px 0 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+.profile-contact li { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.profile-contact span { flex: 0 0 84px; font-family: var(--display); }
+.profile-contact a { color: var(--ink-soft); overflow-wrap: anywhere; }
+.profile-contact a:hover { color: var(--blue); }
 .profile .cards { grid-template-columns: 1fr; gap: 18px; }
 .profile .card dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; margin-top: 14px; align-items: baseline; }
 .profile .card dt { margin-top: 0; }
@@ -305,28 +308,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* activity */
 .activity { background: var(--paper); }
-/* contact */
-.contact {
-  position: relative;
-  padding: 100px 24px 60px;
-  text-align: center;
-  color: var(--white);
-  background:
-    repeating-linear-gradient(98deg, transparent 0 46px, rgba(255, 255, 255, 0.07) 46px 48px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
-    var(--blue);
-}
-.contact h2 {
-  margin: 18px 0 36px;
-  font-family: var(--display);
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(30px, 5vw, 56px);
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-.copy { margin-top: 64px; font-size: 24px; opacity: 0.9; }
-
 @media (max-width: 860px) {
   :root { --header-h: 60px; }
   body { font-size: 20px; }

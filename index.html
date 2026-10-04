@@ -7,159 +7,147 @@
 <meta name="description" content="2D & 3D 게임 아티스트 정해양의 포트폴리오. 게임 아트, 캐릭터 애니메이션, UI, Unity 개발 작업을 모았습니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="stage" id="top">
-  <header class="nav">
-    <a class="brand" href="#top">Haeyang</a>
-    <nav class="nav-links" aria-label="주요 메뉴">
-      <a href="#work">Work</a>
-      <a href="#development">Development</a>
-      <a href="#about">About</a>
-    </nav>
-    <a class="pill" href="#contact">Contact</a>
-  </header>
+<header class="header">
+  <a class="logo" href="#main"><span>Haeyang</span> Archive</a>
+  <nav class="gnb" aria-label="주요 메뉴">
+    <a href="#project">Project</a>
+    <a href="#about">About</a>
+    <a href="#activity">Activity</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <section class="intro">
-    <p class="eyebrow">2D &amp; 3D Game Artist</p>
-    <h1>앞서가는 아티스트, 정해양입니다</h1>
-    <p class="lede">캐릭터 컨셉과 애니메이션, 게임 UI를 그리고 Unity로 직접 구현합니다.</p>
-  </section>
+<nav class="section-nav" aria-label="섹션 이동">
+  <a href="#main" class="is-active"><span>Main</span></a>
+  <a href="#project"><span>Project</span></a>
+  <a href="#about"><span>About</span></a>
+  <a href="#activity"><span>Activity</span></a>
+  <a href="#contact"><span>Contact</span></a>
+</nav>
 
-  <section class="shelf" id="work" aria-labelledby="work-title">
-    <h2 class="shelf-title" id="work-title">2D Art Project</h2>
-    <div class="row">
-      <article class="piece">
-        <button class="frame" data-project="poltergeist" aria-label="Poltergeist 자세히 보기">
-          <img src="assets/thumbs/poltergeist.jpg" alt="Poltergeist 캐릭터 컨셉 일러스트" loading="lazy">
-        </button>
-        <p class="tag">SRPG · 기업협약</p>
-        <h3>Poltergeist</h3>
-        <button class="pill" data-project="poltergeist">View project</button>
-      </article>
-      <article class="piece">
-        <button class="frame" data-project="mirrors" aria-label="Mirrors 자세히 보기">
-          <img src="assets/thumbs/mirrors.jpg" alt="Mirrors 로고" loading="lazy">
-        </button>
-        <p class="tag">오픈월드</p>
-        <h3>Mirrors</h3>
-        <button class="pill" data-project="mirrors">View project</button>
-      </article>
-      <article class="piece">
-        <button class="frame" data-project="backtogether" aria-label="Back Together 자세히 보기">
-          <img src="assets/thumbs/backtogether.jpg" alt="Back Together 로고" loading="lazy">
-        </button>
-        <p class="tag">멀티 파티플레이 · 플랫포머</p>
-        <h3>Back Together</h3>
-        <button class="pill" data-project="backtogether">View project</button>
-      </article>
-      <article class="piece">
-        <button class="frame" data-project="pixelchroma" aria-label="Pixel Chroma 자세히 보기">
-          <img src="assets/thumbs/pixelchroma.jpg" alt="Pixel Chroma 로고" loading="lazy">
-        </button>
-        <p class="tag">멀티 파티플레이 · Hide and Seek</p>
-        <h3>Pixel Chroma</h3>
-        <button class="pill" data-project="pixelchroma">View project</button>
-      </article>
+<main>
+  <section class="kv" id="main">
+    <div class="halo" aria-hidden="true"></div>
+    <img class="kv-art" src="assets/slides/06.jpg" alt="정해양이 그린 캐릭터 컨셉 일러스트">
+    <div class="kv-copy">
+      <p class="plate">2D &amp; 3D Game Artist</p>
+      <h1>Portfolio</h1>
+      <p class="kv-lede">앞서가는 아티스트, <strong>정해양</strong>입니다.<br>캐릭터 컨셉과 애니메이션, 게임 UI를 그리고 Unity로 직접 구현합니다.</p>
+      <div class="kv-actions">
+        <a class="btn" href="#project"><span>프로젝트 보기</span></a>
+        <a class="btn btn-line" href="#contact"><span>Contact</span></a>
+      </div>
     </div>
+    <a class="scroll-cue" href="#project" aria-label="프로젝트로 이동">Scroll</a>
   </section>
-</div>
 
-<div class="stage">
-  <section class="shelf" id="development" aria-labelledby="dev-title">
-    <h2 class="shelf-title" id="dev-title">Development</h2>
-    <div class="row">
-      <article class="piece">
-        <button class="frame" data-project="teacher" aria-label="선생님 잠깐 시간 좀 될까요? 자세히 보기">
-          <img src="assets/thumbs/teacher.jpg" alt="선생님 잠깐 시간 좀 될까요? 타이틀 배너" loading="lazy">
-        </button>
-        <p class="tag">비주얼 노벨 · Meta Quest 3s</p>
-        <h3>선생님 잠깐 시간 좀 될까요?</h3>
-        <button class="pill" data-project="teacher">View project</button>
-      </article>
-      <article class="piece">
-        <button class="frame" data-project="mastertools" aria-label="Master Tools 자세히 보기">
-          <img src="assets/thumbs/mastertools.jpg" alt="Master Tools 시나리오 에디터 화면" loading="lazy">
-        </button>
-        <p class="tag">비주얼 노벨 제작 툴</p>
-        <h3>Master Tools</h3>
-        <button class="pill" data-project="mastertools">View project</button>
-      </article>
+  <section class="section project" id="project" aria-labelledby="project-title">
+    <header class="title">
+      <h2 id="project-title">Project</h2>
+      <p>직접 참여한 게임 아트와 개발 작업</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="프로젝트 분류">
+      <button class="tab is-active" role="tab" aria-selected="true" data-filter="all"><span>All</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="art"><span>2D Art</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="dev"><span>Development</span></button>
     </div>
-  </section>
-</div>
 
-<div class="stage">
-  <section class="about" id="about" aria-labelledby="about-title">
-    <h2 class="shelf-title" id="about-title">About</h2>
-    <div class="about-grid">
-      <div>
+    <div class="stage">
+      <div class="stage-art">
+        <img id="stage-img" src="assets/thumbs/poltergeist.jpg" alt="">
+      </div>
+      <div class="stage-info">
+        <p class="plate" id="stage-tag"></p>
+        <h3 id="stage-title"></h3>
+        <p class="stage-role" id="stage-role"></p>
+        <dl class="meta" id="stage-meta"></dl>
+        <button class="btn" id="stage-open"><span>작업물 보기</span></button>
+      </div>
+    </div>
+
+    <div class="picker" id="picker" role="listbox" aria-label="프로젝트 선택"></div>
+  </section>
+
+  <section class="section about" id="about" aria-labelledby="about-title">
+    <header class="title">
+      <h2 id="about-title">About</h2>
+      <p>그리는 사람이자 만드는 사람</p>
+    </header>
+    <div class="cards">
+      <article class="card">
         <h3>학력</h3>
         <dl>
           <dt>영산대학교</dt><dd>게임콘텐츠학과</dd>
           <dt>디벨로켓</dt><dd>AI를 활용한 메타버스 Unity 게임 부트캠프</dd>
         </dl>
-      </div>
-      <div>
+      </article>
+      <article class="card">
         <h3>경력</h3>
         <dl>
-          <dt>본코스메틱</dt><dd>마케터 · 영상편집 <span class="quiet">2023 – 2024</span></dd>
+          <dt>본코스메틱</dt><dd>마케터 · 영상편집</dd>
           <dt>Pixel Chroma</dt><dd>영상 마케팅</dd>
         </dl>
-      </div>
-      <div>
+      </article>
+      <article class="card">
         <h3>사용 툴</h3>
         <dl>
           <dt>디자인</dt><dd>Photoshop · Premiere Pro</dd>
           <dt>개발</dt><dd>Unity · Blender · Claude · ChatGPT</dd>
         </dl>
-      </div>
-    </div>
-
-    <div class="row row-wide">
-      <article class="piece">
-        <button class="frame frame-wide" data-project="video" aria-label="영상편집 자세히 보기">
-          <img src="assets/slides/27.jpg" alt="본코스메틱 광고 영상과 Pixel Chroma 유튜브 편집 작업" loading="lazy">
-        </button>
-        <h3>영상편집</h3>
-      </article>
-      <article class="piece">
-        <button class="frame frame-wide" data-project="goods" aria-label="굿즈 제작 자세히 보기">
-          <img src="assets/slides/28.jpg" alt="캔뱃지, 아크릴 스탠드 등 굿즈 제작물" loading="lazy">
-        </button>
-        <h3>굿즈 제작</h3>
-      </article>
-      <article class="piece">
-        <button class="frame frame-wide" data-project="banner" aria-label="현수막 제작 자세히 보기">
-          <img src="assets/slides/29.jpg" alt="행사 부스에 설치된 현수막" loading="lazy">
-        </button>
-        <h3>현수막 제작</h3>
       </article>
     </div>
   </section>
-</div>
+
+  <section class="section activity" id="activity" aria-labelledby="activity-title">
+    <header class="title">
+      <h2 id="activity-title">Activity</h2>
+      <p>영상편집과 대외활동</p>
+    </header>
+    <div class="news">
+      <button class="news-item" data-open="video">
+        <img src="assets/slides/27.jpg" alt="본코스메틱 광고 영상과 Pixel Chroma 유튜브 편집 작업" loading="lazy">
+        <span class="news-cat">Video</span>
+        <strong>영상편집</strong>
+        <span class="news-desc">본코스메틱 마케터 · Pixel Chroma 영상 마케팅</span>
+      </button>
+      <button class="news-item" data-open="goods">
+        <img src="assets/slides/28.jpg" alt="캔뱃지, 아크릴 스탠드 등 굿즈 제작물" loading="lazy">
+        <span class="news-cat">Goods</span>
+        <strong>굿즈 제작</strong>
+        <span class="news-desc">캔뱃지 · 아크릴 스탠드 · 포토카드</span>
+      </button>
+      <button class="news-item" data-open="banner">
+        <img src="assets/slides/29.jpg" alt="행사 부스에 설치된 현수막" loading="lazy">
+        <span class="news-cat">Booth</span>
+        <strong>현수막 제작</strong>
+        <span class="news-desc">행사 부스용 현수막 일러스트</span>
+      </button>
+    </div>
+  </section>
+</main>
 
 <footer class="contact" id="contact">
-  <p class="eyebrow">Contact</p>
-  <h2>Looking forward to contact</h2>
-  <a class="pill pill-lg" href="mailto:970626ls@naver.com">970626ls@naver.com</a>
-  <p class="quiet">정해양 · 2D &amp; 3D Game Artist</p>
+  <p class="plate plate-white">Contact</p>
+  <h2>Looking forward to contact!</h2>
+  <a class="btn btn-white" href="mailto:970626ls@naver.com"><span>970626ls@naver.com</span></a>
+  <p class="copy">정해양 · 2D &amp; 3D Game Artist</p>
 </footer>
 
-<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
-  <div class="sheet-head">
+<dialog class="modal" id="modal" aria-labelledby="modal-title">
+  <div class="modal-head">
     <div>
-      <p class="tag" id="sheet-tag"></p>
-      <h2 id="sheet-title"></h2>
+      <p class="plate" id="modal-tag"></p>
+      <h2 id="modal-title"></h2>
     </div>
-    <button class="pill" id="sheet-close">Close</button>
+    <button class="modal-close" id="modal-close" aria-label="닫기"></button>
   </div>
-  <p class="sheet-role" id="sheet-role"></p>
-  <dl class="meta" id="sheet-meta"></dl>
-  <div class="sheet-body" id="sheet-body"></div>
+  <div class="modal-body" id="modal-body"></div>
 </dialog>
 
 <script src="main.js"></script>

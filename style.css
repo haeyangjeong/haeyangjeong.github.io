@@ -254,8 +254,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .stage-art {
   position: relative;
   aspect-ratio: 4 / 3;
-  clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
+  overflow: hidden;
+  border-radius: 20px;
   background: var(--white);
+  box-shadow: 0 0 0 1px var(--line), 0 22px 30px -14px rgba(10, 60, 120, 0.45);
 }
 .stage-art img { width: 100%; height: 100%; object-fit: cover; }
 .stage-art.is-swap img { animation: swap 0.35s ease; }
@@ -276,7 +278,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .meta dd { color: var(--ink-soft); }
 
 .works { display: grid; gap: 20px; margin-top: 48px; }
-.works img { width: 100%; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 20px 34px -24px rgba(10, 60, 120, 0.5); }
+.works { padding-bottom: 14px; }
+.works img { width: 100%; border-radius: 20px; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 22px 30px -14px rgba(10, 60, 120, 0.45); }
 .works.is-swap img { animation: swap 0.35s ease; }
 .works-desc { margin-bottom: -20px; font-family: var(--display); color: var(--blue); }
 

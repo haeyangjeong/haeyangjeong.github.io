@@ -15,8 +15,8 @@
 <header class="header">
   <a class="logo" href="#main"><span>Haeyang</span> Archive</a>
   <nav class="gnb" aria-label="주요 메뉴">
+    <a href="#profile">Profile</a>
     <a href="#project">Project</a>
-    <a href="#about">About</a>
     <a href="#activity">Activity</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -24,8 +24,8 @@
 
 <nav class="section-nav" aria-label="섹션 이동">
   <a href="#main" class="is-active"><span>Main</span></a>
+  <a href="#profile"><span>Profile</span></a>
   <a href="#project"><span>Project</span></a>
-  <a href="#about"><span>About</span></a>
   <a href="#activity"><span>Activity</span></a>
   <a href="#contact"><span>Contact</span></a>
 </nav>
@@ -37,13 +37,51 @@
     <div class="kv-copy">
       <p class="plate">2D &amp; 3D Game Artist</p>
       <h1>Portfolio</h1>
-      <p class="kv-lede">앞서가는 아티스트, <strong>정해양</strong>입니다.<br>캐릭터 컨셉과 애니메이션, 게임 UI를 그리고 Unity로 직접 구현합니다.</p>
+      <p class="kv-lede">앞서가는 아티스트, <strong>정해양</strong>입니다.</p>
       <div class="kv-actions">
         <a class="btn" href="#project"><span>프로젝트 보기</span></a>
         <a class="btn btn-line" href="#contact"><span>Contact</span></a>
       </div>
     </div>
-    <a class="scroll-cue" href="#project" aria-label="프로젝트로 이동">Scroll</a>
+    <a class="scroll-cue" href="#profile" aria-label="프로필로 이동">Scroll</a>
+  </section>
+
+  <section class="section profile" id="profile" aria-labelledby="profile-title">
+    <header class="title">
+      <h2 id="profile-title">Profile</h2>
+      <p>그리는 사람이자 만드는 사람</p>
+    </header>
+    <div class="profile-grid">
+      <div>
+        <p class="plate">2D &amp; 3D Game Artist</p>
+        <h3 class="profile-name">정해양</h3>
+        <p class="profile-role">앞서가는 아티스트</p>
+        <p class="profile-intro">캐릭터 컨셉과 애니메이션, 게임 UI를 그리고 Unity로 직접 구현합니다. 영상편집과 굿즈·현수막 제작까지, 게임을 알리는 일도 함께 해 왔습니다.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>학력</h3>
+          <dl>
+            <dt>영산대학교</dt><dd>게임콘텐츠학과</dd>
+            <dt>디벨로켓</dt><dd>AI를 활용한 메타버스 Unity 게임 부트캠프</dd>
+          </dl>
+        </article>
+        <article class="card">
+          <h3>경력</h3>
+          <dl>
+            <dt>본코스메틱</dt><dd>마케터 · 영상편집</dd>
+            <dt>Pixel Chroma</dt><dd>영상 마케팅</dd>
+          </dl>
+        </article>
+        <article class="card">
+          <h3>사용 툴</h3>
+          <dl>
+            <dt>디자인</dt><dd>Photoshop · Premiere Pro</dd>
+            <dt>개발</dt><dd>Unity · Blender · Claude · ChatGPT</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section class="section project" id="project" aria-labelledby="project-title">
@@ -72,36 +110,6 @@
     </div>
 
     <div class="picker" id="picker" role="listbox" aria-label="프로젝트 선택"></div>
-  </section>
-
-  <section class="section about" id="about" aria-labelledby="about-title">
-    <header class="title">
-      <h2 id="about-title">About</h2>
-      <p>그리는 사람이자 만드는 사람</p>
-    </header>
-    <div class="cards">
-      <article class="card">
-        <h3>학력</h3>
-        <dl>
-          <dt>영산대학교</dt><dd>게임콘텐츠학과</dd>
-          <dt>디벨로켓</dt><dd>AI를 활용한 메타버스 Unity 게임 부트캠프</dd>
-        </dl>
-      </article>
-      <article class="card">
-        <h3>경력</h3>
-        <dl>
-          <dt>본코스메틱</dt><dd>마케터 · 영상편집</dd>
-          <dt>Pixel Chroma</dt><dd>영상 마케팅</dd>
-        </dl>
-      </article>
-      <article class="card">
-        <h3>사용 툴</h3>
-        <dl>
-          <dt>디자인</dt><dd>Photoshop · Premiere Pro</dd>
-          <dt>개발</dt><dd>Unity · Blender · Claude · ChatGPT</dd>
-        </dl>
-      </article>
-    </div>
   </section>
 
   <section class="section activity" id="activity" aria-labelledby="activity-title">

@@ -22,12 +22,11 @@
   </nav>
 </header>
 
-<nav class="section-nav" aria-label="섹션 이동">
-  <a href="#main" class="is-active"><span>Main</span></a>
-  <a href="#profile"><span>Profile</span></a>
-  <a href="#project"><span>Project</span></a>
-  <a href="#activity"><span>Activity</span></a>
-  <a href="#contact"><span>Contact</span></a>
+<nav class="shortcuts" aria-label="바로가기">
+  <a href="#profile">Profile</a>
+  <a href="#project">Project</a>
+  <a href="#activity">Activity</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <main>
@@ -56,7 +55,6 @@
         <p class="plate">2D &amp; 3D Game Artist</p>
         <h3 class="profile-name">정해양</h3>
         <p class="profile-role">앞서가는 아티스트</p>
-        <p class="profile-intro">캐릭터 컨셉과 애니메이션, 게임 UI를 그리고 Unity로 직접 구현합니다. 영상편집과 굿즈·현수막 제작까지, 게임을 알리는 일도 함께 해 왔습니다.</p>
       </div>
       <div class="cards">
         <article class="card">
@@ -90,13 +88,9 @@
       <p>직접 참여한 게임 아트와 개발 작업</p>
     </header>
 
-    <div class="tabs" role="tablist" aria-label="프로젝트 분류">
-      <button class="tab is-active" role="tab" aria-selected="true" data-filter="all"><span>All</span></button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="art"><span>2D Art</span></button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="dev"><span>Development</span></button>
-    </div>
+    <div class="tabs" id="project-tabs" role="tablist" aria-label="프로젝트 선택"></div>
 
-    <div class="stage">
+    <div class="stage" id="project-panel" role="tabpanel">
       <div class="stage-art">
         <img id="stage-img" src="assets/thumbs/poltergeist.jpg" alt="">
       </div>
@@ -105,11 +99,10 @@
         <h3 id="stage-title"></h3>
         <p class="stage-role" id="stage-role"></p>
         <dl class="meta" id="stage-meta"></dl>
-        <button class="btn" id="stage-open"><span>작업물 보기</span></button>
       </div>
     </div>
 
-    <div class="picker" id="picker" role="listbox" aria-label="프로젝트 선택"></div>
+    <div class="works" id="project-works"></div>
   </section>
 
   <section class="section activity" id="activity" aria-labelledby="activity-title">
@@ -117,26 +110,9 @@
       <h2 id="activity-title">Activity</h2>
       <p>영상편집과 대외활동</p>
     </header>
-    <div class="news">
-      <button class="news-item" data-open="video">
-        <img src="assets/slides/27.jpg" alt="본코스메틱 광고 영상과 Pixel Chroma 유튜브 편집 작업" loading="lazy">
-        <span class="news-cat">Video</span>
-        <strong>영상편집</strong>
-        <span class="news-desc">본코스메틱 마케터 · Pixel Chroma 영상 마케팅</span>
-      </button>
-      <button class="news-item" data-open="goods">
-        <img src="assets/slides/28.jpg" alt="캔뱃지, 아크릴 스탠드 등 굿즈 제작물" loading="lazy">
-        <span class="news-cat">Goods</span>
-        <strong>굿즈 제작</strong>
-        <span class="news-desc">캔뱃지 · 아크릴 스탠드 · 포토카드</span>
-      </button>
-      <button class="news-item" data-open="banner">
-        <img src="assets/slides/29.jpg" alt="행사 부스에 설치된 현수막" loading="lazy">
-        <span class="news-cat">Booth</span>
-        <strong>현수막 제작</strong>
-        <span class="news-desc">행사 부스용 현수막 일러스트</span>
-      </button>
-    </div>
+    <div class="tabs" id="activity-tabs" role="tablist" aria-label="활동 선택"></div>
+    <p class="works-desc" id="activity-desc"></p>
+    <div class="works" id="activity-works"></div>
   </section>
 </main>
 
@@ -146,17 +122,6 @@
   <a class="btn btn-white" href="mailto:970626ls@naver.com"><span>970626ls@naver.com</span></a>
   <p class="copy">정해양 · 2D &amp; 3D Game Artist</p>
 </footer>
-
-<dialog class="modal" id="modal" aria-labelledby="modal-title">
-  <div class="modal-head">
-    <div>
-      <p class="plate" id="modal-tag"></p>
-      <h2 id="modal-title"></h2>
-    </div>
-    <button class="modal-close" id="modal-close" aria-label="닫기"></button>
-  </div>
-  <div class="modal-body" id="modal-body"></div>
-</dialog>
 
 <script src="main.js"></script>
 </body>

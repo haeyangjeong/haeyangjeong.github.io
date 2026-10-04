@@ -1,7 +1,6 @@
 const PROJECTS = [
   {
     key: "poltergeist",
-    cat: "art",
     title: "Poltergeist",
     tag: "2D Game Art · 기업협약",
     role: "Logo Design & Character Concepts",
@@ -10,7 +9,6 @@ const PROJECTS = [
   },
   {
     key: "mirrors",
-    cat: "art",
     title: "Mirrors",
     tag: "2D Game Art",
     role: "Logo Design & Character Concepts",
@@ -19,7 +17,6 @@ const PROJECTS = [
   },
   {
     key: "backtogether",
-    cat: "art",
     title: "Back Together",
     tag: "2D Game Art",
     role: "Character Animation",
@@ -28,7 +25,6 @@ const PROJECTS = [
   },
   {
     key: "pixelchroma",
-    cat: "art",
     title: "Pixel Chroma",
     tag: "2D Game Art",
     role: "Character Animation & UI",
@@ -37,7 +33,6 @@ const PROJECTS = [
   },
   {
     key: "teacher",
-    cat: "dev",
     title: "선생님 잠깐 시간 좀 될까요?",
     tag: "Development",
     role: "Toon Shader & Character Interaction",
@@ -46,7 +41,6 @@ const PROJECTS = [
   },
   {
     key: "mastertools",
-    cat: "dev",
     title: "Master Tools",
     tag: "Development",
     role: "Visual Game Maker",
@@ -55,44 +49,63 @@ const PROJECTS = [
   },
 ];
 
-const ACTIVITIES = {
-  video: { title: "영상편집", tag: "Activity", slides: ["27"] },
-  goods: { title: "굿즈 제작", tag: "Activity", slides: ["28"] },
-  banner: { title: "현수막 제작", tag: "Activity", slides: ["29"] },
-};
+const ACTIVITIES = [
+  { key: "video", title: "영상편집", desc: "본코스메틱 마케터 · Pixel Chroma 영상 마케팅", slides: ["27"] },
+  { key: "goods", title: "굿즈 제작", desc: "캔뱃지 · 아크릴 스탠드 · 포토카드", slides: ["28"] },
+  { key: "banner", title: "현수막 제작", desc: "행사 부스용 현수막 일러스트", slides: ["29"] },
+];
 
 const el = (id) => document.getElementById(id);
-const picker = el("picker");
-const modal = el("modal");
-let current = PROJECTS[0];
 
-// project picker
-for (const p of PROJECTS) {
-  const b = document.createElement("button");
-  b.className = "pick";
-  b.dataset.key = p.key;
-  b.dataset.cat = p.cat;
-  b.setAttribute("role", "option");
-  b.innerHTML = `<span class="pick-img"><img src="assets/thumbs/${p.key}.jpg" alt="" loading="lazy"></span><span class="pick-name"></span>`;
-  b.querySelector(".pick-name").textContent = p.title;
-  picker.append(b);
+function replay(node) {
+  node.classList.remove("is-swap");
+  void node.offsetWidth;
+  node.classList.add("is-swap");
 }
 
-function select(key) {
-  const p = PROJECTS.find((x) => x.key === key);
-  if (!p) return;
-  current = p;
-  for (const b of picker.children) {
-    const on = b.dataset.key === key;
-    b.classList.toggle("is-active", on);
-    b.setAttribute("aria-selected", on);
+function showWorks(container, item) {
+  container.replaceChildren();
+  for (const n of item.slides) {
+    const img = document.createElement("img");
+    img.src = `assets/slides/${n}.jpg`;
+    img.alt = `${item.title} 작업물`;
+    img.loading = "lazy";
+    container.append(img);
   }
-  const art = el("stage-img").parentElement;
+  replay(container);
+}
+
+// one row of buttons; pressing one shows that item right on the page
+function buildTabs(tabsEl, items, onSelect) {
+  for (const item of items) {
+    const b = document.createElement("button");
+    const label = document.createElement("span");
+    b.className = "tab";
+    b.setAttribute("role", "tab");
+    b.dataset.key = item.key;
+    label.textContent = item.title;
+    b.append(label);
+    tabsEl.append(b);
+  }
+  const select = (key) => {
+    for (const b of tabsEl.children) {
+      const on = b.dataset.key === key;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-selected", on);
+    }
+    onSelect(items.find((x) => x.key === key));
+  };
+  tabsEl.addEventListener("click", (e) => {
+    const b = e.target.closest(".tab");
+    if (b) select(b.dataset.key);
+  });
+  select(items[0].key);
+}
+
+buildTabs(el("project-tabs"), PROJECTS, (p) => {
   el("stage-img").src = `assets/thumbs/${p.key}.jpg`;
   el("stage-img").alt = `${p.title} 대표 이미지`;
-  art.classList.remove("is-swap");
-  void art.offsetWidth;
-  art.classList.add("is-swap");
+  replay(el("stage-img").parentElement);
   el("stage-tag").textContent = p.tag;
   el("stage-title").textContent = p.title;
   el("stage-role").textContent = p.role;
@@ -107,61 +120,10 @@ function select(key) {
     row.append(dt, dd);
     meta.append(row);
   }
-}
-
-function openModal(item) {
-  el("modal-tag").textContent = item.tag;
-  el("modal-title").textContent = item.title;
-  const body = el("modal-body");
-  body.replaceChildren();
-  for (const n of item.slides) {
-    const img = document.createElement("img");
-    img.src = `assets/slides/${n}.jpg`;
-    img.alt = `${item.title} 작업물`;
-    body.append(img);
-  }
-  modal.showModal();
-  modal.scrollTop = 0;
-}
-
-picker.addEventListener("click", (e) => {
-  const b = e.target.closest(".pick");
-  if (b) select(b.dataset.key);
+  showWorks(el("project-works"), p);
 });
 
-document.querySelectorAll(".tab").forEach((tab) =>
-  tab.addEventListener("click", () => {
-    const f = tab.dataset.filter;
-    document.querySelectorAll(".tab").forEach((t) => {
-      t.classList.toggle("is-active", t === tab);
-      t.setAttribute("aria-selected", t === tab);
-    });
-    let first = null;
-    for (const b of picker.children) {
-      b.hidden = f !== "all" && b.dataset.cat !== f;
-      if (!b.hidden && !first) first = b;
-    }
-    if (f !== "all" && current.cat !== f && first) select(first.dataset.key);
-  })
-);
-
-el("stage-open").addEventListener("click", () => openModal(current));
-el("stage-img").parentElement.addEventListener("click", () => openModal(current));
-document.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => openModal(ACTIVITIES[b.dataset.open])));
-el("modal-close").addEventListener("click", () => modal.close());
-modal.addEventListener("click", (e) => { if (e.target === modal) modal.close(); });
-
-select(current.key);
-
-// side section nav highlight
-const links = [...document.querySelectorAll(".section-nav a")];
-const observer = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      links.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${entry.target.id}`));
-    }
-  },
-  { rootMargin: "-45% 0px -45% 0px" }
-);
-links.forEach((a) => observer.observe(document.querySelector(a.getAttribute("href"))));
+buildTabs(el("activity-tabs"), ACTIVITIES, (a) => {
+  el("activity-desc").textContent = a.desc;
+  showWorks(el("activity-works"), a);
+});

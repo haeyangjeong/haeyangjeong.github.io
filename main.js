@@ -162,9 +162,10 @@ function buildTabs(tabsEl, items, onSelect) {
     if (b) select(b.dataset.key);
   });
   select(items[0].key);
+  return select;
 }
 
-buildTabs(el("project-tabs"), PROJECTS, (p) => {
+const selectProject = buildTabs(el("project-tabs"), PROJECTS, (p) => {
   el("stage-img").src = `assets/thumbs/${p.key}.jpg`;
   el("stage-img").alt = `${p.title} 대표 이미지`;
   replay(el("stage-img").parentElement);
@@ -200,3 +201,36 @@ buildTabs(el("activity-tabs"), ACTIVITIES, (a) => {
   el("activity-desc").textContent = a.desc;
   showWorks(el("activity-works"), a);
 });
+
+// home screen: left banners and right feed are built from the same project list
+function goToProject(key) {
+  selectProject(key);
+  el("project").scrollIntoView();
+}
+
+for (const p of PROJECTS) {
+  const b = document.createElement("button");
+  b.className = "banner";
+  b.textContent = p.title;
+  b.addEventListener("click", () => goToProject(p.key));
+  el("banners").append(b);
+
+  const video = p.links.find((l) => l.url.includes("youtu"));
+  const post = document.createElement("article");
+  post.className = "post";
+  post.innerHTML = `
+    <div class="post-head"><img class="avatar" src="assets/profile.jpg" alt=""><span>정해양</span><img class="kind" src="assets/icons/youtube.png" alt=""></div>
+    <a class="post-thumb" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
+    <button class="post-body"><strong></strong><span class="role"></span><span class="tag"></span></button>`;
+  const thumb = post.querySelector(".post-thumb");
+  thumb.href = video ? video.url : "#project";
+  thumb.setAttribute("aria-label", `${p.title} ${video ? video.label : "보기"}`);
+  thumb.querySelector("img").src = `assets/thumbs/${p.key}.jpg`;
+  post.querySelector("strong").textContent = `[${p.title}] ${video ? video.label : ""}`;
+  post.querySelector(".role").textContent = p.role;
+  post.querySelector(".tag").textContent = `#${p.meta["장르"].split(",")[0].trim().replace(/\s+/g, "")} #${p.tag.split("·")[0].trim().replace(/\s+/g, "")}`;
+  post.querySelector(".post-body").addEventListener("click", () => goToProject(p.key));
+  el("feed").append(post);
+}
+
+el("feature").addEventListener("click", (e) => goToProject(e.currentTarget.dataset.go));

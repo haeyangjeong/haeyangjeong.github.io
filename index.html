@@ -8,39 +8,44 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
 <header class="header">
   <a class="logo" href="#main"><span>Haeyang</span> Archive</a>
   <nav class="gnb" aria-label="주요 메뉴">
-    <a href="#profile">Profile</a>
-    <a href="#project">Project</a>
-    <a href="#activity">Activity</a>
+    <a href="#profile">프로필</a>
+    <a href="#project">프로젝트</a>
+    <a href="#activity">대외활동</a>
   </nav>
+  <div class="header-side">
+    <a class="header-pill" href="mailto:970626ls@naver.com">메일 보내기</a>
+    <a class="header-icon" href="https://youtube.com/@pixelchroma_youtube?si=XFHdWRVVgRahQ_mw" target="_blank" rel="noopener" aria-label="Pixel Chroma 공식 유튜브"><img src="assets/icons/youtube.png" alt=""></a>
+    <a class="header-icon" href="https://github.com/Ryukon97" target="_blank" rel="noopener" aria-label="GitHub"><img src="assets/icons/github.png" alt=""></a>
+  </div>
 </header>
 
-<nav class="shortcuts" aria-label="바로가기">
-  <a href="#profile">Profile</a>
-  <a href="#project">Project</a>
-  <a href="#activity">Activity</a>
-</nav>
-
 <main>
-  <section class="kv" id="main">
-    <div class="halo" aria-hidden="true"></div>
-    <img class="kv-art" src="assets/slides/06.jpg" alt="정해양이 그린 캐릭터 컨셉 일러스트">
-    <div class="kv-copy">
-      <p class="plate">2D &amp; 3D Game Artist</p>
-      <h1>Portfolio</h1>
-      <p class="kv-lede">앞서가는 아티스트, <strong>정해양</strong>입니다.</p>
-      <div class="kv-actions">
-        <a class="btn" href="#project"><span>프로젝트 보기</span></a>
-        <a class="btn btn-line" href="#profile"><span>프로필 보기</span></a>
-      </div>
-    </div>
-    <a class="scroll-cue" href="#profile" aria-label="프로필로 이동">Scroll</a>
+  <section class="home" id="main" aria-label="메인">
+    <h1 class="sr-only">정해양 포트폴리오 — 2D &amp; 3D Game Artist</h1>
+
+    <nav class="banners" id="banners" aria-label="프로젝트 바로가기"></nav>
+
+    <p class="home-note">환영합니다, 정해양입니다!</p>
+
+    <button class="feature" id="feature" data-go="pixelchroma">
+      <span class="feature-top"><b>Steam</b> × Pixel Chroma</span>
+      <img src="assets/thumbs/pixelchroma.jpg" alt="Pixel Chroma 로고">
+      <span class="feature-cap">Character Animation &amp; UI</span>
+    </button>
+
+    <a class="office" href="#profile">
+      <img src="assets/profile.jpg" alt="">
+      <span>프로필 바로가기</span>
+    </a>
+
+    <aside class="feed" id="feed" aria-label="작업 영상"></aside>
   </section>
 
   <section class="section profile" id="profile" aria-labelledby="profile-title">
@@ -117,6 +122,6 @@
   </section>
 </main>
 
-<script src="main.js?v=3"></script>
+<script src="main.js?v=4"></script>
 </body>
 </html>

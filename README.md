@@ -26,6 +26,174 @@
 
 개발 도구는 모두 Unity 6.3.2, Photoshop입니다.
 
+## 홈페이지 본문
+
+홈페이지에 실제로 나오는 글과 이미지를 순서대로 옮긴 것입니다.
+
+### 표지
+
+> **2D & 3D Game Artist**
+>
+> # Portfolio
+>
+> 앞서가는 아티스트, **정해양**입니다.
+>
+> [프로젝트 보기] [프로필 보기]
+
+![표지 캐릭터 일러스트](assets/slides/06.jpg)
+
+### Profile
+
+**2D & 3D Game Artist**
+
+**정해양** — 앞서가는 아티스트
+
+<img src="assets/profile.jpg" alt="정해양 프로필 사진" width="200">
+
+| | |
+|---|---|
+| Email | 970626ls@naver.com |
+| Phone | 010-4550-5260 |
+
+**학력**
+
+- 영산대학교 — 게임콘텐츠학과
+- 디벨로켓 — AI를 활용한 메타버스 Unity 게임 부트캠프
+
+**경력**
+
+- 본코스메틱 — 마케터 · 영상편집
+- Pixel Chroma — 영상 마케팅
+
+**사용 툴**
+
+- 디자인 — Photoshop · Premiere Pro
+- 개발 — Unity · Blender · Claude · ChatGPT
+
+### Project
+
+버튼 순서: Poltergeist / Mirrors / Back Together / Pixel Chroma / 선생님 잠깐 시간 좀 될까요? / Master Tools
+
+#### Poltergeist
+
+`2D Game Art · 기업협약` — **Logo Design & Character Concepts**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.08.31 – 2026.09.30 |
+| 개발인원 | 4명 |
+| 장르 | SRPG |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | PC |
+
+![Poltergeist 대표 이미지](assets/thumbs/poltergeist.jpg)
+![Poltergeist 작업물](assets/slides/06.jpg)
+
+#### Mirrors
+
+`2D Game Art` — **Logo Design & Character Concepts**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.05.01 – 2026.05.31 |
+| 개발인원 | 4명 |
+| 장르 | 오픈월드 |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | PC |
+
+![Mirrors 대표 이미지](assets/thumbs/mirrors.jpg)
+![Mirrors 작업물 1](assets/slides/08.jpg)
+![Mirrors 작업물 2](assets/slides/09.jpg)
+
+#### Back Together
+
+`2D Game Art` — **Character Animation**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.07.01 – 2026.07.31 |
+| 개발인원 | 5명 |
+| 장르 | 멀티 파티플레이, 플랫포머 |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | PC |
+
+![Back Together 대표 이미지](assets/thumbs/backtogether.jpg)
+![Back Together 작업물 1](assets/slides/11.jpg)
+![Back Together 작업물 2](assets/slides/12.jpg)
+
+#### Pixel Chroma
+
+`2D Game Art` — **Character Animation & UI**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.06.26 – 2026.09.01 |
+| 개발인원 | 4명 |
+| 장르 | 멀티 파티플레이, Hide and Seek |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | PC |
+
+![Pixel Chroma 대표 이미지](assets/thumbs/pixelchroma.jpg)
+![Pixel Chroma 작업물 1](assets/slides/14.jpg)
+![Pixel Chroma 작업물 2](assets/slides/15.jpg)
+![Pixel Chroma 작업물 3](assets/slides/16.jpg)
+![Pixel Chroma 작업물 4](assets/slides/17.jpg)
+
+#### 선생님 잠깐 시간 좀 될까요?
+
+`Development` — **Toon Shader & Character Interaction**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.09.03 – 2026.09.10 |
+| 개발인원 | 1명 |
+| 장르 | 비주얼 노벨 |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | Meta Quest 3s |
+
+![선생님 잠깐 시간 좀 될까요? 대표 이미지](assets/thumbs/teacher.jpg)
+![선생님 잠깐 시간 좀 될까요? 작업물 1](assets/slides/20.jpg)
+![선생님 잠깐 시간 좀 될까요? 작업물 2](assets/slides/21.jpg)
+![선생님 잠깐 시간 좀 될까요? 작업물 3](assets/slides/22.jpg)
+![선생님 잠깐 시간 좀 될까요? 작업물 4](assets/slides/23.jpg)
+
+#### Master Tools
+
+`Development` — **Visual Game Maker**
+
+| 항목 | 내용 |
+|---|---|
+| 제작기간 | 2026.04.01 – 2026.04.30 |
+| 개발인원 | 1명 |
+| 장르 | 비주얼 노벨 |
+| 개발 도구 | Unity 6.3.2, Photoshop |
+| 플랫폼 | PC, 모바일, VR |
+
+![Master Tools 대표 이미지](assets/thumbs/mastertools.jpg)
+![Master Tools 작업물](assets/slides/25.jpg)
+
+### Activity
+
+버튼 순서: 영상편집 / 굿즈 제작 / 현수막 제작
+
+#### 영상편집
+
+본코스메틱 마케터 · Pixel Chroma 영상 마케팅
+
+![영상편집 작업물](assets/slides/27.jpg)
+
+#### 굿즈 제작
+
+캔뱃지 · 아크릴 스탠드 · 포토카드
+
+![굿즈 제작 작업물](assets/slides/28.jpg)
+
+#### 현수막 제작
+
+행사 부스용 현수막 일러스트
+
+![현수막 제작 작업물](assets/slides/29.jpg)
+
 ## 디자인
 
 블루 아카이브 공식 홈페이지의 구성과 분위기를 참고했습니다. 넥슨의 로고나 이미지는 쓰지 않았고, 그림은 모두 본인 작업물입니다.

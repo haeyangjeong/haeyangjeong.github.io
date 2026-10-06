@@ -6,6 +6,10 @@ const PROJECTS = [
     role: "Logo Design & Character Concepts",
     meta: { 제작기간: "2026.08.31 – 2026.09.30", 개발인원: "4명", 장르: "SRPG", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC" },
     slides: ["06"],
+    links: [
+      { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
+      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/collabo-team-project-august-pixelchroma.git" },
+    ],
   },
   {
     key: "mirrors",
@@ -14,6 +18,10 @@ const PROJECTS = [
     role: "Logo Design & Character Concepts",
     meta: { 제작기간: "2026.05.01 – 2026.05.31", 개발인원: "4명", 장르: "오픈월드", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC" },
     slides: ["08", "09"],
+    links: [
+      { label: "플레이 영상", url: "https://youtu.be/3L-w9T-UCMY" },
+      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/team-project-may-5-2.git" },
+    ],
   },
   {
     key: "backtogether",
@@ -22,6 +30,11 @@ const PROJECTS = [
     role: "Character Animation",
     meta: { 제작기간: "2026.07.01 – 2026.07.31", 개발인원: "5명", 장르: "멀티 파티플레이, 플랫포머", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC" },
     slides: ["11", "12"],
+    links: [
+      { label: "상점페이지", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
+      { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
+      { label: "GIT", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
+    ],
   },
   {
     key: "pixelchroma",
@@ -30,6 +43,11 @@ const PROJECTS = [
     role: "Character Animation & UI",
     meta: { 제작기간: "2026.06.26 – 2026.09.01", 개발인원: "4명", 장르: "멀티 파티플레이, Hide and Seek", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC" },
     slides: ["14", "15", "16", "17"],
+    links: [
+      { label: "상점페이지", url: "https://store.steampowered.com/app/5023800/Pixel_Chroma/?l=koreana" },
+      { label: "공식 트레일러", url: "https://youtu.be/hEiYHdttB30" },
+      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/network-team-project-july-7-3.git" },
+    ],
   },
   {
     key: "teacher",
@@ -38,6 +56,10 @@ const PROJECTS = [
     role: "Toon Shader & Character Interaction",
     meta: { 제작기간: "2026.09.03 – 2026.09.10", 개발인원: "1명", 장르: "비주얼 노벨", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "Meta Quest 3s" },
     slides: ["20", "21", "22", "23"],
+    links: [
+      { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
+      { label: "GIT", url: "https://github.com/Ryukon97/VRProject.git" },
+    ],
   },
   {
     key: "mastertools",
@@ -46,6 +68,10 @@ const PROJECTS = [
     role: "Visual Game Maker",
     meta: { 제작기간: "2026.04.01 – 2026.04.30", 개발인원: "1명", 장르: "비주얼 노벨", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC, 모바일, VR" },
     slides: ["25"],
+    links: [
+      { label: "플레이 영상", url: "https://youtu.be/01IqTF0F9SA" },
+      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/personal-project-april-Ryukon97.git" },
+    ],
   },
 ];
 
@@ -55,7 +81,30 @@ const ACTIVITIES = [
   { key: "banner", title: "현수막 제작", desc: "행사 부스용 현수막 일러스트", slides: ["29"] },
 ];
 
+// clickable areas on the work images, as percentages of the image (from the PDF's link positions)
+const HOTSPOTS = {
+  11: [{ label: "게임 스크린샷 및 쇼츠 영상", url: "https://youtu.be/64PHtlV8q3M", box: [87.42, 22.8, 6.3, 11.2] }],
+  12: [
+    { label: "인게임 쇼츠 1", url: "https://www.youtube.com/shorts/c7GH5WagXX4?feature=share", box: [71.42, 62.13, 8.7, 15.46] },
+    { label: "인게임 쇼츠 2", url: "https://www.youtube.com/shorts/kVdBY1qEDkU?t=18&feature=share", box: [83.18, 62.13, 8.7, 15.46] },
+  ],
+  16: [
+    { label: "인게임 쇼츠 1", url: "https://www.youtube.com/shorts/RndHLzNhqSs?t=1&feature=share", box: [69.86, 61.8, 8.44, 15.0] },
+    { label: "인게임 쇼츠 2", url: "https://www.youtube.com/shorts/tHYJCxr2Uns?feature=share", box: [81.27, 61.8, 8.44, 15.0] },
+  ],
+  27: [
+    { label: "광고 영상 모음", url: "https://youtu.be/vC0grSFlpOo", box: [45.04, 26.76, 3.75, 6.67] },
+    { label: "게임 공식 유튜브", url: "https://youtube.com/@pixelchroma_youtube?si=XFHdWRVVgRahQ_mw", box: [51.62, 26.76, 3.75, 6.67] },
+  ],
+};
+
 const el = (id) => document.getElementById(id);
+
+function external(a, url) {
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener";
+}
 
 function replay(node) {
   node.classList.remove("is-swap");
@@ -66,11 +115,24 @@ function replay(node) {
 function showWorks(container, item) {
   container.replaceChildren();
   for (const n of item.slides) {
+    const work = document.createElement("div");
+    work.className = "work";
     const img = document.createElement("img");
     img.src = `assets/slides/${n}.jpg`;
     img.alt = `${item.title} 작업물`;
     img.loading = "lazy";
-    container.append(img);
+    work.append(img);
+    for (const spot of HOTSPOTS[Number(n)] || []) {
+      const a = document.createElement("a");
+      const [x, y, w, h] = spot.box;
+      a.className = "hot";
+      a.style.cssText = `left:${x}%;top:${y}%;width:${w}%;height:${h}%`;
+      a.setAttribute("aria-label", `${spot.label} 열기`);
+      a.title = spot.label;
+      external(a, spot.url);
+      work.append(a);
+    }
+    container.append(work);
   }
   replay(container);
 }
@@ -119,6 +181,17 @@ buildTabs(el("project-tabs"), PROJECTS, (p) => {
     dd.textContent = v;
     row.append(dt, dd);
     meta.append(row);
+  }
+  const links = el("stage-links");
+  links.replaceChildren();
+  for (const link of p.links) {
+    const a = document.createElement("a");
+    const label = document.createElement("span");
+    a.className = "btn btn-sm";
+    label.textContent = link.label;
+    a.append(label);
+    external(a, link.url);
+    links.append(a);
   }
   showWorks(el("project-works"), p);
 });

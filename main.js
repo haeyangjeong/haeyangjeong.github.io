@@ -248,14 +248,36 @@ const overview = el("overview");
 
 function buildOverview() {
   const body = el("overview-body");
-  for (const p of PROJECTS) {
+  // projects first, then outside activities (goods, banner) and video editing last
+  const activity = (key) => ACTIVITIES.find((x) => x.key === key);
+  const entries = [
+    ...PROJECTS.map((p) => ({
+      tag: p.tag,
+      title: p.title,
+      role: p.role,
+      facts: [p.meta["제작기간"], p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" · "),
+      slides: p.slides,
+      links: p.links,
+    })),
+    ...["goods", "banner"].map((k) => ({ tag: "대외활동", title: activity(k).title, role: "", facts: activity(k).desc, slides: activity(k).slides, links: [] })),
+    {
+      tag: "영상편집",
+      title: activity("video").title,
+      role: "",
+      facts: activity("video").desc,
+      slides: activity("video").slides,
+      links: (HOTSPOTS[27] || []).map((s) => ({ label: s.label, url: s.url })),
+    },
+  ];
+  for (const p of entries) {
     const item = document.createElement("section");
     item.className = "overview-item";
-    item.innerHTML = `<p class="plate"></p><h3></h3><p class="role"></p><p class="facts"></p><div class="shots"></div><div class="stage-links"></div>`;
+    item.innerHTML = `<div class="overview-top"><div><p class="plate"></p><h3></h3><p class="role"></p><p class="facts"></p></div><div class="overview-links"></div></div><div class="shots"></div>`;
     item.querySelector(".plate").textContent = p.tag;
     item.querySelector("h3").textContent = p.title;
     item.querySelector(".role").textContent = p.role;
-    item.querySelector(".facts").textContent = [p.meta["제작기간"], p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" · ");
+    item.querySelector(".role").hidden = !p.role;
+    item.querySelector(".facts").textContent = p.facts;
     for (const n of p.slides) {
       const img = document.createElement("img");
       img.src = `assets/slides/${n}.jpg`;
@@ -266,11 +288,11 @@ function buildOverview() {
     for (const link of p.links) {
       const a = document.createElement("a");
       const label = document.createElement("span");
-      a.className = "btn btn-sm";
+      a.className = "btn btn-xs";
       label.textContent = link.label;
       a.append(label);
       external(a, link.url);
-      item.querySelector(".stage-links").append(a);
+      item.querySelector(".overview-links").append(a);
     }
     body.append(item);
   }

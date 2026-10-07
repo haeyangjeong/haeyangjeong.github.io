@@ -316,13 +316,29 @@ el("overview-open").addEventListener("click", () => {
 el("overview-close").addEventListener("click", () => overview.close());
 overview.addEventListener("click", (e) => { if (e.target === overview) overview.close(); });
 
-// zoom popup: any work image (on the page or inside the overview) opens large
+// zoom popup: any work image (on the page or inside the overview) opens large, with zoom controls
 const zoom = el("zoom");
+const zoomImg = el("zoom-img");
+let zoomFit = 0; // width at which the whole image fits the screen (= 100%)
+
+function setZoom(percent) {
+  const value = Math.min(300, Math.max(50, percent));
+  zoomImg.style.width = `${(zoomFit * value) / 100}px`;
+  el("zoom-range").value = value;
+  el("zoom-value").textContent = `${value}%`;
+}
+
 document.addEventListener("click", (e) => {
   const img = e.target.closest(".work img, .overview-item .shots img");
   if (!img) return;
-  el("zoom-img").src = img.src;
-  el("zoom-img").alt = img.alt;
+  zoomImg.src = img.src;
+  zoomImg.alt = img.alt;
+  zoomFit = Math.min(innerWidth * 0.96, innerHeight * 0.94 * (img.naturalWidth / img.naturalHeight));
+  setZoom(100);
   zoom.showModal();
 });
-zoom.addEventListener("click", () => zoom.close());
+el("zoom-range").addEventListener("input", (e) => setZoom(Number(e.target.value)));
+el("zoom-in").addEventListener("click", () => setZoom(Number(el("zoom-range").value) + 20));
+el("zoom-out").addEventListener("click", () => setZoom(Number(el("zoom-range").value) - 20));
+el("zoom-close").addEventListener("click", () => zoom.close());
+el("zoom-stage").addEventListener("click", (e) => { if (e.target === e.currentTarget) zoom.close(); });

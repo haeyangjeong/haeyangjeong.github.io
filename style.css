@@ -236,6 +236,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .overview-item .facts { margin-top: 6px; font-family: "Pretendard", var(--body); font-weight: 500; font-size: 19px; color: var(--ink-soft); }
 .overview-item .shots { display: grid; gap: 14px; margin-top: 18px; }
 .overview-item .shots img { width: 100%; border-radius: 16px; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 16px 24px -14px rgba(10, 60, 120, 0.45); }
+.overview-item .plate[hidden] { display: none; }
 .overview-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
 .overview-links { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; padding: 4px 6px 0 0; }
 .btn-xs { min-width: 0; padding: 8px 17px 6px; font-size: 14.4px; border-radius: 6px; box-shadow: 0 3px 0 var(--blue-deep); }

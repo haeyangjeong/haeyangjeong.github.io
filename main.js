@@ -252,6 +252,8 @@ function shortPeriod(period) {
   return `${from}~${to.slice(0, 5) === from.slice(0, 5) ? to.slice(5) : to}`;
 }
 
+const slashed = (text) => text.replaceAll(" · ", " / ");
+
 function buildOverview() {
   const body = el("overview-body");
   // projects first, then outside activities (goods, banner) and video editing last
@@ -265,12 +267,13 @@ function buildOverview() {
       slides: p.slides,
       links: p.links,
     })),
-    ...["goods", "banner"].map((k) => ({ tag: "대외활동", title: activity(k).title, role: "", facts: activity(k).desc, slides: activity(k).slides, links: [] })),
+    // goods and banner belong to the same group, so only the first carries the label
+    ...["goods", "banner"].map((k, i) => ({ tag: i ? "" : "대외활동", title: activity(k).title, role: "", facts: slashed(activity(k).desc), slides: activity(k).slides, links: [] })),
     {
-      tag: "영상편집",
+      tag: "마케팅 활동",
       title: activity("video").title,
       role: "",
-      facts: activity("video").desc,
+      facts: slashed(activity("video").desc),
       slides: activity("video").slides,
       links: (HOTSPOTS[27] || []).map((s) => ({ label: s.label, url: s.url })),
     },
@@ -280,6 +283,7 @@ function buildOverview() {
     item.className = "overview-item";
     item.innerHTML = `<div class="overview-top"><div><p class="plate"></p><h3></h3><p class="role"></p><p class="facts"></p></div><div class="overview-links"></div></div><div class="shots"></div>`;
     item.querySelector(".plate").textContent = p.tag;
+    item.querySelector(".plate").hidden = !p.tag;
     item.querySelector("h3").textContent = p.title;
     item.querySelector(".role").textContent = p.role;
     item.querySelector(".role").hidden = !p.role;

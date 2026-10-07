@@ -216,7 +216,27 @@ for (const p of PROJECTS) {
   el("banners").append(b);
 }
 
-el("feature").addEventListener("click", (e) => goToProject(e.currentTarget.dataset.go));
+// top-right card: arrows switch between the Steam games, the card itself opens the store page
+const FEATURES = [
+  { key: "pixelchroma", name: "Pixel Chroma", cap: "Character Animation & UI", url: "https://store.steampowered.com/app/5023800/Pixel_Chroma/" },
+  { key: "backtogether", name: "Back Together", cap: "Character Animation", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
+];
+let featureIndex = 0;
+
+function showFeature(step) {
+  featureIndex = (featureIndex + step + FEATURES.length) % FEATURES.length;
+  const f = FEATURES[featureIndex];
+  el("feature-link").href = f.url;
+  el("feature-link").setAttribute("aria-label", `${f.name} Steam 상점 페이지 열기`);
+  el("feature-name").textContent = f.name;
+  el("feature-cap").textContent = f.cap;
+  el("feature-img").src = `assets/thumbs/${f.key}.jpg`;
+  if (step) replay(el("feature-link"));
+}
+
+el("feature-prev").addEventListener("click", () => showFeature(-1));
+el("feature-next").addEventListener("click", () => showFeature(1));
+showFeature(0);
 
 // back-to-top button appears once the home screen is scrolled past
 const toTop = el("to-top");

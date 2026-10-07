@@ -173,12 +173,28 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: linear-gradient(180deg, #eaf5ff, var(--white));
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 18px 30px -16px rgba(10, 60, 120, 0.7);
   text-align: center;
-  transition: transform 0.2s;
 }
-.feature:hover { transform: translateY(-4px); }
+.feature-link { display: block; }
+.feature-link.is-swap img { animation: swap 0.3s ease; }
+.feature-nav {
+  position: absolute;
+  top: 50%;
+  width: 38px;
+  height: 54px;
+  margin-top: -27px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 6px 14px -6px rgba(10, 60, 120, 0.7);
+  transition: background 0.2s, transform 0.2s;
+}
+.feature-nav.is-prev { left: -19px; }
+.feature-nav.is-next { right: -10px; }
+.feature-nav::before { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; border-left: 3px solid var(--blue-deep); border-bottom: 3px solid var(--blue-deep); transform: translate(-30%, -50%) rotate(45deg); }
+.feature-nav.is-next::before { transform: translate(-70%, -50%) rotate(-135deg); }
+.feature-nav:hover { background: var(--white); transform: scale(1.08); }
 .feature-top { display: block; padding: 2px 8px 8px; font-family: var(--display); font-size: 24px; text-align: left; color: var(--ink); }
 .feature-top b { font-weight: 400; color: var(--blue); }
-.feature img { width: 100%; border-radius: 8px; }
+.feature img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
 .feature-cap { display: block; margin-top: 10px; font-family: var(--display); font-size: 24px; color: var(--ink); }
 
 /* back to top: wide glass pill, bottom left */

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=15">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -27,11 +27,15 @@
 
     <p class="home-note">환영합니다, 정해양입니다!</p>
 
-    <button class="feature" id="feature" data-go="pixelchroma">
-      <span class="feature-top"><b>Steam</b> × Pixel Chroma</span>
-      <img src="assets/thumbs/pixelchroma.jpg" alt="Pixel Chroma 로고">
-      <span class="feature-cap">Character Animation &amp; UI</span>
-    </button>
+    <div class="feature" id="feature">
+      <a class="feature-link" id="feature-link" target="_blank" rel="noopener">
+        <span class="feature-top"><b>Steam</b> × <span id="feature-name"></span></span>
+        <img id="feature-img" src="assets/thumbs/pixelchroma.jpg" alt="">
+        <span class="feature-cap" id="feature-cap"></span>
+      </a>
+      <button class="feature-nav is-prev" id="feature-prev" aria-label="이전 게임"></button>
+      <button class="feature-nav is-next" id="feature-next" aria-label="다음 게임"></button>
+    </div>
 
   </section>
 
@@ -112,6 +116,6 @@
 
 <a class="to-top" id="to-top" href="#main" aria-label="맨 위로 이동"><span aria-hidden="true">↑</span> TOP</a>
 
-<script src="main.js?v=10"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>

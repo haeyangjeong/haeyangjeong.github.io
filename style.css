@@ -250,8 +250,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .zoom-stage img { flex: none; margin: auto; max-width: none; border-radius: 12px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); }
 .zoom-bar { position: fixed; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.7); color: var(--ink); }
 .zoom-bar output { min-width: 58px; font-family: "Pretendard", var(--body); font-weight: 500; font-size: 18px; text-align: right; }
-.zoom-bar button { width: 36px; height: 36px; border-radius: 50%; background: var(--paper); font-size: 24px; line-height: 1; color: var(--blue-deep); transition: background 0.2s, color 0.2s; }
+.zoom-bar button { position: relative; flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--paper); color: var(--blue-deep); transition: background 0.2s, color 0.2s; }
+.zoom-bar button::before, .zoom-bar button.is-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2.5px; margin: -1.25px 0 0 -7px; border-radius: 2px; background: currentColor; }
+.zoom-bar button.is-plus::after { transform: rotate(90deg); }
 .zoom-bar button:hover { background: var(--blue); color: var(--white); }
+.zoom-stage.is-pannable { cursor: grab; }
+.zoom-stage.is-panning { cursor: grabbing; user-select: none; }
+.zoom-stage img { -webkit-user-drag: none; user-select: none; }
 .zoom-bar input { width: 150px; accent-color: var(--blue); }
 .zoom-close { position: fixed; right: 20px; top: 20px; background: var(--white); }
 .zoom-close::before, .zoom-close::after { background: var(--ink); }

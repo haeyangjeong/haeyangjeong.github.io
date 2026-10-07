@@ -326,6 +326,7 @@ function setZoom(percent) {
   zoomImg.style.width = `${(zoomFit * value) / 100}px`;
   el("zoom-range").value = value;
   el("zoom-value").textContent = `${value}%`;
+  el("zoom-stage").classList.toggle("is-pannable", value > 100);
 }
 
 document.addEventListener("click", (e) => {
@@ -341,4 +342,30 @@ el("zoom-range").addEventListener("input", (e) => setZoom(Number(e.target.value)
 el("zoom-in").addEventListener("click", () => setZoom(Number(el("zoom-range").value) + 20));
 el("zoom-out").addEventListener("click", () => setZoom(Number(el("zoom-range").value) - 20));
 el("zoom-close").addEventListener("click", () => zoom.close());
-el("zoom-stage").addEventListener("click", (e) => { if (e.target === e.currentTarget) zoom.close(); });
+
+// above 100% the image can be dragged around; a drag never counts as a click on the backdrop
+const stage = el("zoom-stage");
+let pan = null;
+stage.addEventListener("pointerdown", (e) => {
+  if (!stage.classList.contains("is-pannable") || e.button !== 0) return;
+  pan = { x: e.clientX, y: e.clientY, left: stage.scrollLeft, top: stage.scrollTop, moved: false };
+  try { stage.setPointerCapture(e.pointerId); } catch { /* synthetic pointers cannot be captured */ }
+  stage.classList.add("is-panning");
+});
+stage.addEventListener("pointermove", (e) => {
+  if (!pan) return;
+  const dx = e.clientX - pan.x;
+  const dy = e.clientY - pan.y;
+  if (Math.abs(dx) + Math.abs(dy) > 4) pan.moved = true;
+  stage.scrollLeft = pan.left - dx;
+  stage.scrollTop = pan.top - dy;
+});
+const endPan = () => {
+  stage.classList.remove("is-panning");
+  setTimeout(() => { pan = null; });
+};
+stage.addEventListener("pointerup", endPan);
+stage.addEventListener("pointercancel", endPan);
+stage.addEventListener("click", (e) => {
+  if (e.target === stage && !(pan && pan.moved)) zoom.close();
+});

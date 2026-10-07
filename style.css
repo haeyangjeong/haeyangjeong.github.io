@@ -327,7 +327,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .timeline span { display: block; font-size: 24px; line-height: 1.35; color: var(--ink-soft); word-break: keep-all; }
 
 /* tools: category label on the left, wide rounded chips on the right */
-.profile .tools dl { grid-template-columns: auto 1fr; gap: 7px 20px; align-items: center; }
+.profile .tools { padding-top: 26px; padding-bottom: 27px; }
+.profile .tools dl { grid-template-columns: auto 1fr; gap: 10px 20px; align-items: center; }
 .profile .tools dt { font-size: 18px; white-space: nowrap; }
 .profile .tools dd { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { padding: 6px 20px 5px; border-radius: 999px; background: var(--c); color: var(--white); font-family: var(--body); font-weight: 700; font-size: 13px; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }

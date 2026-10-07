@@ -2,7 +2,7 @@ const PROJECTS = [
   {
     key: "poltergeist",
     title: "Poltergeist",
-    tag: "2D Game Art · 기업협약",
+    tag: "2D Game Art / 기업협약",
     role: "Logo Design & Character Concepts",
     meta: { 제작기간: "2026.08.31 – 2026.09.30", 개발인원: "4명", 장르: "SRPG", "개발 도구": "Unity 6.3.2, Photoshop", 플랫폼: "PC" },
     slides: ["06"],

@@ -54,6 +54,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .logo { font-family: var(--display); font-size: 28px; font-style: italic; letter-spacing: -0.01em; white-space: nowrap; }
 .logo span { color: var(--blue); }
+.header .logo { position: absolute; left: 50%; transform: translateX(-50%); color: var(--ink); }
 .header-side { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .header-pill { padding: 9px 22px 7px; border-radius: 10px; background: var(--sky); color: var(--white); font-family: var(--display); font-size: 24px; transition: background 0.2s; }
 .header-pill:hover { background: var(--blue); }
@@ -395,4 +396,5 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .timeline span { font-size: 20px; }
   .profile .tools dl { grid-template-columns: 1fr; gap: 4px; }
   .profile .tools dt { margin-top: 10px; }
+  .header .logo { position: static; transform: none; }
 }

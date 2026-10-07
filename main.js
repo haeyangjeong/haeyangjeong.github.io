@@ -217,3 +217,9 @@ for (const p of PROJECTS) {
 }
 
 el("feature").addEventListener("click", (e) => goToProject(e.currentTarget.dataset.go));
+
+// back-to-top button appears once the home screen is scrolled past
+const toTop = el("to-top");
+const toggleTop = () => toTop.classList.toggle("is-shown", scrollY > innerHeight * 0.6);
+addEventListener("scroll", toggleTop, { passive: true });
+toggleTop();

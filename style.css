@@ -181,6 +181,37 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .feature img { width: 100%; border-radius: 8px; }
 .feature-cap { display: block; margin-top: 10px; font-family: var(--display); font-size: 24px; color: var(--ink); }
 
+/* back to top: wide glass pill, bottom left */
+.to-top {
+  position: fixed;
+  left: 20px;
+  bottom: 24px;
+  z-index: 18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 200px;
+  padding: 14px 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(18, 138, 250, 0.3);
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  box-shadow: 0 10px 24px -12px rgba(10, 60, 120, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: var(--blue-deep);
+  font-family: var(--display);
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s, background 0.2s;
+}
+.to-top span { font-family: var(--body); font-weight: 700; }
+.to-top.is-shown { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: rgba(18, 138, 250, 0.5); color: var(--white); }
+
 /* project: tabs, stage, picker */
 .project { background: linear-gradient(180deg, var(--white), var(--mist)); }
 .tabs { display: flex; gap: 8px; margin-bottom: 36px; padding: 0 6px; }
@@ -319,4 +350,5 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .feature { display: none; }
   .home { min-height: 520px; }
   .banner { font-size: 16px; }
+  .to-top { left: 12px; bottom: 14px; width: 150px; padding: 11px 0 8px; font-size: 18px; }
 }

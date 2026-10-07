@@ -295,14 +295,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .timeline { padding-bottom: 36px; }
 .timeline-head { display: grid; grid-template-columns: 1fr 1fr; text-align: center; }
 .timeline-head h3 { padding-bottom: 6px; }
-.timeline ol { position: relative; display: grid; gap: 22px; margin: 18px 0 0; padding: 6px 0; list-style: none; }
+.timeline ol { position: relative; display: grid; grid-auto-rows: 1fr; margin: 18px 0 0; padding: 0; list-style: none; }
 .timeline ol::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; border-radius: 2px; background: var(--blue); }
-.timeline li { position: relative; width: 50%; padding-right: 44px; text-align: right; }
-.timeline li.is-career { margin-left: 50%; padding: 0 0 0 44px; text-align: left; }
-.timeline li::before { content: ""; position: absolute; top: 4px; right: -13px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px var(--paper); }
-.timeline li.is-career::before { right: auto; left: -13px; }
-.timeline li::after { content: ""; position: absolute; top: 16px; right: 13px; width: 24px; height: 3px; background: var(--blue); }
-.timeline li.is-career::after { right: auto; left: 13px; }
+.timeline li { position: relative; display: flex; flex-direction: column; justify-content: center; width: 50%; padding: 12px 36px; text-align: center; }
+.timeline li.is-career { margin-left: 50%; }
+.timeline li::before { content: ""; position: absolute; top: 50%; right: -9px; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px var(--paper); }
+.timeline li.is-career::before { right: auto; left: -9px; }
+.timeline li::after { content: ""; position: absolute; top: 50%; right: 9px; width: 18px; height: 3px; margin-top: -1.5px; background: var(--blue); }
+.timeline li.is-career::after { right: auto; left: 9px; }
 .timeline strong { display: block; font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1.3; }
 .timeline span { display: block; font-size: 24px; line-height: 1.35; color: var(--ink-soft); word-break: keep-all; }
 
@@ -368,8 +368,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .to-top { left: 10px; bottom: 12px; }
   .timeline-head { display: none; }
   .timeline ol::before { left: 13px; }
-  .timeline li, .timeline li.is-career { width: 100%; margin-left: 0; padding: 0 0 0 48px; text-align: left; }
-  .timeline li::before, .timeline li.is-career::before { left: 0; right: auto; }
+  .timeline ol { grid-auto-rows: auto; gap: 18px; }
+  .timeline li, .timeline li.is-career { width: 100%; margin-left: 0; padding: 0 0 0 44px; text-align: left; }
+  .timeline li::before, .timeline li.is-career::before { left: 4px; right: auto; }
   .timeline li::after, .timeline li.is-career::after { display: none; }
   .timeline strong { font-size: 22px; }
   .timeline span { font-size: 20px; }

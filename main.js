@@ -316,3 +316,13 @@ el("overview-open").addEventListener("click", () => {
 el("overview-close").addEventListener("click", () => overview.close());
 overview.addEventListener("click", (e) => { if (e.target === overview) overview.close(); });
 
+// zoom popup: any work image (on the page or inside the overview) opens large
+const zoom = el("zoom");
+document.addEventListener("click", (e) => {
+  const img = e.target.closest(".work img, .overview-item .shots img");
+  if (!img) return;
+  el("zoom-img").src = img.src;
+  el("zoom-img").alt = img.alt;
+  zoom.showModal();
+});
+zoom.addEventListener("click", () => zoom.close());

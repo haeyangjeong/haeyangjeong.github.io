@@ -242,6 +242,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn-xs { min-width: 0; padding: 8px 17px 6px; font-size: 14.4px; border-radius: 6px; box-shadow: 0 3px 0 var(--blue-deep); }
 .btn-xs:hover { box-shadow: 0 1px 0 var(--blue-deep); transform: skew(var(--skew)) translateY(2px); }
 
+/* zoom: click a work image to see it large */
+.work img, .overview-item .shots img { cursor: zoom-in; }
+.zoom { max-width: none; max-height: none; width: 100vw; height: 100vh; padding: 0; border: 0; background: transparent; overflow: hidden; }
+.zoom[open] { display: grid; place-items: center; }
+.zoom::backdrop { background: rgba(20, 16, 13, 0.88); }
+.zoom img { max-width: 96vw; max-height: 94vh; width: auto; height: auto; border-radius: 12px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); cursor: zoom-out; }
+.zoom-close { position: fixed; right: 20px; top: 20px; background: var(--white); }
+.zoom-close::before, .zoom-close::after { background: var(--ink); }
+.zoom-close:hover::before, .zoom-close:hover::after { background: var(--white); }
+
 /* back to top: wide glass pill, bottom left */
 .to-top {
   position: fixed;

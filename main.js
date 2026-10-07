@@ -242,3 +242,45 @@ const toTop = el("to-top");
 const toggleTop = () => toTop.classList.toggle("is-shown", scrollY > innerHeight * 0.6);
 addEventListener("scroll", toggleTop, { passive: true });
 toggleTop();
+
+// overview popup: every project in one scrolling sheet, built the first time it opens
+const overview = el("overview");
+
+function buildOverview() {
+  const body = el("overview-body");
+  for (const p of PROJECTS) {
+    const item = document.createElement("section");
+    item.className = "overview-item";
+    item.innerHTML = `<p class="plate"></p><h3></h3><p class="role"></p><p class="facts"></p><div class="shots"></div><div class="stage-links"></div>`;
+    item.querySelector(".plate").textContent = p.tag;
+    item.querySelector("h3").textContent = p.title;
+    item.querySelector(".role").textContent = p.role;
+    item.querySelector(".facts").textContent = [p.meta["제작기간"], p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" · ");
+    for (const n of p.slides) {
+      const img = document.createElement("img");
+      img.src = `assets/slides/${n}.jpg`;
+      img.alt = `${p.title} 작업물`;
+      img.loading = "lazy";
+      item.querySelector(".shots").append(img);
+    }
+    for (const link of p.links) {
+      const a = document.createElement("a");
+      const label = document.createElement("span");
+      a.className = "btn btn-sm";
+      label.textContent = link.label;
+      a.append(label);
+      external(a, link.url);
+      item.querySelector(".stage-links").append(a);
+    }
+    body.append(item);
+  }
+}
+
+el("overview-open").addEventListener("click", () => {
+  if (!el("overview-body").children.length) buildOverview();
+  overview.showModal();
+  el("overview-body").scrollTop = 0;
+});
+el("overview-close").addEventListener("click", () => overview.close());
+overview.addEventListener("click", (e) => { if (e.target === overview) overview.close(); });
+

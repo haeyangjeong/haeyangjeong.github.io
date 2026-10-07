@@ -150,20 +150,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .banner::after { content: "→"; flex: none; font-family: var(--body); font-weight: 700; }
 .banner:hover { background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25)); transform: translateX(5px); }
 
-.home-note {
-  position: absolute;
-  left: 54%;
-  top: 62%;
-  padding: 8px 20px 6px;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 4px;
-  color: var(--blue-deep);
-  font-family: var(--display);
-  font-size: 24px;
-  transform: rotate(-4deg);
-  box-shadow: 0 8px 18px -10px rgba(10, 60, 120, 0.6);
-}
-
 .feature {
   position: absolute;
   right: 16px;
@@ -384,7 +370,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 @media (max-width: 1280px) {
-  .home-note { display: none; }
   .feature { width: 340px; }
 }
 

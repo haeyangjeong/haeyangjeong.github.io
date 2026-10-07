@@ -76,8 +76,8 @@ const PROJECTS = [
 ];
 
 const ACTIVITIES = [
-  { key: "video", title: "영상편집", desc: "본코스메틱 마케터 · Pixel Chroma 영상 마케팅", slides: ["27"] },
-  { key: "goods", title: "굿즈 제작", desc: "캔뱃지 · 아크릴 스탠드 · 포토카드", slides: ["28"] },
+  { key: "video", title: "영상편집", desc: "본코스메틱 마케터 / Pixel Chroma 영상 마케팅", slides: ["27"] },
+  { key: "goods", title: "굿즈 제작", desc: "캔뱃지 / 아크릴 스탠드 / 포토카드 / 핸드폰거치대", slides: ["28"] },
   { key: "banner", title: "현수막 제작", desc: "행사 부스용 현수막 일러스트", slides: ["29"] },
 ];
 

@@ -279,7 +279,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* profile */
 .profile { background: var(--white); }
-.profile-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; align-items: start; }
+.profile-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; align-items: stretch; }
 .profile-name { margin: 18px 0 10px; font-family: var(--display); font-size: clamp(48px, 6vw, 80px); line-height: 1.05; }
 .profile-role { font-family: var(--display); color: var(--blue); }
 .profile-photo { width: 200px; height: auto; margin-top: 24px; border-radius: 10px; box-shadow: 0 0 0 1px var(--line), 8px 8px 0 var(--mist); }
@@ -288,17 +288,22 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .profile-contact span { flex: 0 0 84px; font-family: var(--display); }
 .profile-contact a { color: var(--ink-soft); }
 .profile-contact a:hover { color: var(--blue); }
-.profile .cards { grid-template-columns: 1fr; gap: 18px; }
+.profile .cards { display: flex; flex-direction: column; gap: 18px; }
 .profile .card dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; margin-top: 14px; align-items: baseline; }
 .profile .card dt { margin-top: 0; }
 /* education / career timeline: one centre line, education on the left, career on the right */
-.timeline { padding-bottom: 36px; }
+.timeline { flex: 1; display: flex; flex-direction: column; padding-bottom: 30px; }
 .timeline-head { display: grid; grid-template-columns: 1fr 1fr; text-align: center; }
 .timeline-head h3 { padding-bottom: 6px; }
-.timeline ol { position: relative; display: grid; grid-auto-rows: 1fr; margin: 18px 0 0; padding: 0; list-style: none; }
+.timeline ol { position: relative; flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); margin: 12px 0 0; padding: 0; list-style: none; }
 .timeline ol::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; border-radius: 2px; background: var(--blue); }
-.timeline li { position: relative; display: flex; flex-direction: column; justify-content: center; width: 50%; padding: 12px 36px; text-align: center; }
-.timeline li.is-career { margin-left: 50%; }
+/* each entry spans two half-rows and starts one half-row below the previous, so the dots are evenly spaced */
+.timeline li { position: relative; display: flex; flex-direction: column; justify-content: center; grid-column: 1; padding: 0 36px; text-align: center; }
+.timeline li.is-career { grid-column: 2; }
+.timeline li:nth-child(1) { grid-row: 1 / span 2; }
+.timeline li:nth-child(2) { grid-row: 2 / span 2; }
+.timeline li:nth-child(3) { grid-row: 3 / span 2; }
+.timeline li:nth-child(4) { grid-row: 4 / span 2; }
 .timeline li::before { content: ""; position: absolute; top: 50%; right: -9px; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px var(--paper); }
 .timeline li.is-career::before { right: auto; left: -9px; }
 .timeline li::after { content: ""; position: absolute; top: 50%; right: 9px; width: 18px; height: 3px; margin-top: -1.5px; background: var(--blue); }
@@ -368,8 +373,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .to-top { left: 10px; bottom: 12px; }
   .timeline-head { display: none; }
   .timeline ol::before { left: 13px; }
-  .timeline ol { grid-auto-rows: auto; gap: 18px; }
-  .timeline li, .timeline li.is-career { width: 100%; margin-left: 0; padding: 0 0 0 44px; text-align: left; }
+  .timeline ol { display: grid; grid-template-columns: 1fr; grid-template-rows: none; gap: 18px; }
+  .timeline li:nth-child(n) { grid-column: 1; grid-row: auto; padding: 0 0 0 44px; text-align: left; }
   .timeline li::before, .timeline li.is-career::before { left: 4px; right: auto; }
   .timeline li::after, .timeline li.is-career::after { display: none; }
   .timeline strong { font-size: 22px; }

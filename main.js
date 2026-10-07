@@ -8,7 +8,7 @@ const PROJECTS = [
     slides: ["06"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/collabo-team-project-august-pixelchroma.git" },
+      { label: "GIT", url: "https://github.com/Ryukon97/Poltergeist" },
     ],
   },
   {
@@ -20,7 +20,7 @@ const PROJECTS = [
     slides: ["08", "09"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/3L-w9T-UCMY" },
-      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/team-project-may-5-2.git" },
+      { label: "GIT", url: "https://github.com/Ryukon97/Mirrors" },
     ],
   },
   {
@@ -33,7 +33,7 @@ const PROJECTS = [
     links: [
       { label: "상점페이지", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
+      { label: "GIT", url: "https://github.com/Ryukon97/BackTogether" },
     ],
   },
   {
@@ -46,7 +46,7 @@ const PROJECTS = [
     links: [
       { label: "상점페이지", url: "https://store.steampowered.com/app/5023800/Pixel_Chroma/?l=koreana" },
       { label: "공식 트레일러", url: "https://youtu.be/hEiYHdttB30" },
-      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/network-team-project-july-7-3.git" },
+      { label: "GIT", url: "https://github.com/Ryukon97/PixelChroma" },
     ],
   },
   {
@@ -58,7 +58,7 @@ const PROJECTS = [
     slides: ["20", "21", "22", "23"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://github.com/Ryukon97/VRProject.git" },
+      { label: "GIT", url: "https://github.com/Ryukon97/VRProject" },
     ],
   },
   {
@@ -70,7 +70,7 @@ const PROJECTS = [
     slides: ["25"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/01IqTF0F9SA" },
-      { label: "GIT", url: "https://github.com/Devel-Rocket-ClassRoom/personal-project-april-Ryukon97.git" },
+      { label: "GIT", url: "https://github.com/Ryukon97/MasterTool" },
     ],
   },
 ];

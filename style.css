@@ -5,6 +5,13 @@
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2") format("woff2");
+}
+
 :root {
   --blue: #128afa;
   --blue-deep: #0a6fd0;
@@ -226,12 +233,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .overview-item:last-child { border-bottom: 0; }
 .overview-item h3 { margin: 12px 0 2px; font-family: var(--display); font-weight: 400; font-size: 36px; line-height: 1.2; }
 .overview-item .role { font-family: var(--display); color: var(--blue); }
-.overview-item .facts { margin-top: 6px; color: var(--ink-soft); }
+.overview-item .facts { margin-top: 6px; font-family: "Pretendard", var(--body); font-weight: 500; font-size: 19px; color: var(--ink-soft); }
 .overview-item .shots { display: grid; gap: 14px; margin-top: 18px; }
 .overview-item .shots img { width: 100%; border-radius: 16px; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 16px 24px -14px rgba(10, 60, 120, 0.45); }
-.overview-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.overview-links { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; padding: 0 6px 6px 0; }
-.btn-xs { min-width: 0; padding: 7px 14px 5px; font-size: 12px; border-radius: 6px; box-shadow: 0 3px 0 var(--blue-deep); }
+.overview-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.overview-links { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; padding: 4px 6px 0 0; }
+.btn-xs { min-width: 0; padding: 8px 17px 6px; font-size: 14.4px; border-radius: 6px; box-shadow: 0 3px 0 var(--blue-deep); }
 .btn-xs:hover { box-shadow: 0 1px 0 var(--blue-deep); transform: skew(var(--skew)) translateY(2px); }
 
 /* back to top: wide glass pill, bottom left */

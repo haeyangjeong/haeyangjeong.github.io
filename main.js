@@ -246,6 +246,12 @@ toggleTop();
 // overview popup: every project in one scrolling sheet, built the first time it opens
 const overview = el("overview");
 
+// "2026.08.31 – 2026.09.30" -> "2026.08.31~09.30" (the year is repeated only when it differs)
+function shortPeriod(period) {
+  const [from, to] = period.split("–").map((x) => x.trim());
+  return `${from}~${to.slice(0, 5) === from.slice(0, 5) ? to.slice(5) : to}`;
+}
+
 function buildOverview() {
   const body = el("overview-body");
   // projects first, then outside activities (goods, banner) and video editing last
@@ -255,7 +261,7 @@ function buildOverview() {
       tag: p.tag,
       title: p.title,
       role: p.role,
-      facts: [p.meta["제작기간"], p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" · "),
+      facts: [shortPeriod(p.meta["제작기간"]), p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" / "),
       slides: p.slides,
       links: p.links,
     })),

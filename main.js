@@ -199,6 +199,21 @@ const selectProject = buildTabs(el("project-tabs"), PROJECTS, (p) => {
 
 buildTabs(el("activity-tabs"), ACTIVITIES, (a) => {
   el("activity-desc").textContent = a.desc;
+  // the video tab also offers its YouTube links as buttons
+  const links = el("activity-links");
+  links.replaceChildren();
+  for (const link of a.key === "video" ? HOTSPOTS[27] : []) {
+    const btn = document.createElement("a");
+    const icon = document.createElement("img");
+    const label = document.createElement("span");
+    btn.className = "link-pill";
+    icon.src = "assets/icons/youtube.png";
+    icon.alt = "";
+    label.textContent = link.label;
+    btn.append(icon, label);
+    external(btn, link.url);
+    links.append(btn);
+  }
   showWorks(el("activity-works"), a);
 });
 

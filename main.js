@@ -100,6 +100,26 @@ const HOTSPOTS = {
 
 const el = (id) => document.getElementById(id);
 
+// slides shown as draggable before/after comparisons instead of a flat picture (frames taken from the capture video)
+const COMPARES = {
+  20: { title: "셀식 스타일 구현", pairs: ["cel-close", "cel-wide"] },
+};
+
+function buildCompare(name, title) {
+  const box = document.createElement("div");
+  box.className = "compare";
+  box.innerHTML = `<img alt="" loading="lazy"><img class="compare-before" alt="" loading="lazy"><span class="compare-tag is-before">Before</span><span class="compare-tag is-after">After</span><span class="compare-handle"></span><input type="range" min="0" max="100" step="0.1" value="50">`;
+  const [after, before] = box.querySelectorAll("img");
+  after.src = `assets/compare/${name}-after.jpg`;
+  after.alt = `${title} After`;
+  before.src = `assets/compare/${name}-before.jpg`;
+  before.alt = `${title} Before`;
+  const range = box.querySelector("input");
+  range.setAttribute("aria-label", `${title} Before / After 비교`);
+  range.addEventListener("input", () => box.style.setProperty("--pos", `${range.value}%`));
+  return box;
+}
+
 function external(a, url) {
   a.href = url;
   a.target = "_blank";
@@ -117,6 +137,18 @@ function showWorks(container, item) {
   for (const n of item.slides) {
     const work = document.createElement("div");
     work.className = "work";
+    const compare = COMPARES[Number(n)];
+    if (compare) {
+      const title = document.createElement("h4");
+      const grid = document.createElement("div");
+      work.classList.add("work-compare");
+      title.textContent = compare.title;
+      grid.className = "compare-grid";
+      grid.append(...compare.pairs.map((name) => buildCompare(name, compare.title)));
+      work.append(title, grid);
+      container.append(work);
+      continue;
+    }
     const img = document.createElement("img");
     img.src = `assets/slides/${n}.jpg`;
     img.alt = `${item.title} 작업물`;

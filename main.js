@@ -106,9 +106,10 @@ const COMPARES = {
     { title: "셀식 스타일 구현", sub: "인물", name: "cel-close" },
     { title: "셀식 스타일 구현", sub: "배경", name: "cel-wide" },
   ],
+  21: [{ title: "음영 3단계화 및 그라데이션", name: "shade", labels: ["그라데이션", "음영 3단계화"] }],
 };
 
-function buildCompare(name, title) {
+function buildCompare(name, title, labels = ["Before", "After"]) {
   const box = document.createElement("div");
   box.className = "compare";
   box.innerHTML = `<img alt="" loading="lazy"><img class="compare-before" alt="" loading="lazy"><span class="compare-tag is-before">Before</span><span class="compare-tag is-after">After</span><span class="compare-handle"></span><input type="range" min="0" max="100" step="0.1" value="50">`;
@@ -117,8 +118,10 @@ function buildCompare(name, title) {
   after.alt = `${title} After`;
   before.src = `assets/compare/${name}-before.jpg`;
   before.alt = `${title} Before`;
+  box.querySelector(".is-before").textContent = labels[0];
+  box.querySelector(".is-after").textContent = labels[1];
   const range = box.querySelector("input");
-  range.setAttribute("aria-label", `${title} Before / After 비교`);
+  range.setAttribute("aria-label", `${title} ${labels.join(" / ")} 비교`);
   range.addEventListener("input", () => box.style.setProperty("--pos", `${range.value}%`));
   return box;
 }
@@ -148,9 +151,9 @@ function showWorks(container, item) {
         const title = document.createElement("h4");
         const part = document.createElement("small");
         card.className = "work work-compare";
-        part.textContent = c.sub;
+        part.textContent = c.sub || "";
         title.append(c.title, " ", part);
-        card.append(title, buildCompare(c.name, `${c.title} ${c.sub}`));
+        card.append(title, buildCompare(c.name, [c.title, c.sub].filter(Boolean).join(" "), c.labels));
         container.append(card);
       }
       continue;

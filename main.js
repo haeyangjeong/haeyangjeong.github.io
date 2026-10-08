@@ -106,7 +106,10 @@ const COMPARES = {
     { title: "셀식 스타일 구현", sub: "인물", name: "cel-close" },
     { title: "셀식 스타일 구현", sub: "배경", name: "cel-wide" },
   ],
-  21: [{ title: "음영 3단계화 및 그라데이션", name: "shade", labels: ["그라데이션", "음영 3단계화"] }],
+  21: [
+    { title: "그라데이션을 셀 방식화", name: "cel-step", labels: ["그라데이션", "셀 방식화"] },
+    { title: "음영 3단계화", name: "shade", labels: ["음영 2단계화", "음영 3단계화"] },
+  ],
 };
 
 function buildCompare(name, title, labels = ["Before", "After"]) {

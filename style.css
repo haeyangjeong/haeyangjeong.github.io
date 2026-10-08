@@ -370,9 +370,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .compare-tag { position: absolute; top: 50%; padding: 9px 18px 7px; border-radius: 6px; background: rgba(43, 36, 32, 0.6); color: var(--white); font-family: var(--display); font-size: 18px; transform: translateY(-50%); pointer-events: none; }
 .compare-tag.is-before { left: 12px; }
 .compare-tag.is-after { right: 12px; }
-.compare-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: var(--white); box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); pointer-events: none; }
-.compare-handle::before { content: ""; position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; border: 3px solid var(--white); border-radius: 50%; background: rgba(43, 36, 32, 0.35); box-shadow: 0 0 8px rgba(0, 0, 0, 0.45); transform: translate(-50%, -50%); }
-.compare-handle::after { content: ""; position: absolute; top: 50%; left: 50%; width: 22px; height: 12px; background: var(--white); clip-path: polygon(0 50%, 36% 0, 36% 100%, 64% 0, 100% 50%, 64% 100%); transform: translate(-50%, -50%); }
+.compare-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: linear-gradient(var(--white), var(--white)) top / 100% calc(50% - 20px) no-repeat, linear-gradient(var(--white), var(--white)) bottom / 100% calc(50% - 20px) no-repeat; filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5)); pointer-events: none; }
+.compare-handle::before { content: ""; position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; border: 2px solid var(--white); border-radius: 50%; background: rgba(43, 36, 32, 0.25); transform: translate(-50%, -50%); }
+.compare-handle::after { content: ""; position: absolute; top: 50%; left: 50%; width: 18px; height: 9px; background: var(--white); clip-path: polygon(0 50%, 30% 0, 30% 100%, 0 50%, 100% 50%, 70% 0, 70% 100%, 100% 50%); transform: translate(-50%, -50%); }
 .compare input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; touch-action: pan-y; }
 .compare:has(input:focus-visible) { outline: 3px solid var(--blue); outline-offset: 2px; }
 .works.is-swap .work { animation: swap 0.35s ease; }

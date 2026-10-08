@@ -102,7 +102,10 @@ const el = (id) => document.getElementById(id);
 
 // slides shown as draggable before/after comparisons instead of a flat picture (frames taken from the capture video)
 const COMPARES = {
-  20: { title: "셀식 스타일 구현", pairs: ["cel-close", "cel-wide"] },
+  20: [
+    { title: "셀식 스타일 구현", sub: "인물", name: "cel-close" },
+    { title: "셀식 스타일 구현", sub: "배경", name: "cel-wide" },
+  ],
 };
 
 function buildCompare(name, title) {
@@ -137,16 +140,19 @@ function showWorks(container, item) {
   for (const n of item.slides) {
     const work = document.createElement("div");
     work.className = "work";
-    const compare = COMPARES[Number(n)];
-    if (compare) {
-      const title = document.createElement("h4");
-      const grid = document.createElement("div");
-      work.classList.add("work-compare");
-      title.textContent = compare.title;
-      grid.className = "compare-grid";
-      grid.append(...compare.pairs.map((name) => buildCompare(name, compare.title)));
-      work.append(title, grid);
-      container.append(work);
+    const compares = COMPARES[Number(n)];
+    if (compares) {
+      // one card per comparison
+      for (const c of compares) {
+        const card = document.createElement("div");
+        const title = document.createElement("h4");
+        const part = document.createElement("small");
+        card.className = "work work-compare";
+        part.textContent = c.sub;
+        title.append(c.title, " ", part);
+        card.append(title, buildCompare(c.name, `${c.title} ${c.sub}`));
+        container.append(card);
+      }
       continue;
     }
     const img = document.createElement("img");

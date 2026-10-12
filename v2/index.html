@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
     <p class="hero-lead"><i aria-hidden="true"></i><span id="hero-lead"></span></p>
     <button class="hero-arrow is-prev" id="hero-prev" aria-label="이전 화면"></button>
     <button class="hero-arrow is-next" id="hero-next" aria-label="다음 화면"></button>
-    <a class="hero-play" id="hero-play" target="_blank" rel="noopener" aria-label="플레이 영상 보기" title="플레이 영상 보기"></a>
+    <button class="hero-play" id="hero-play" aria-label="프로젝트 모아보기 재생" title="프로젝트 모아보기"></button>
     <div class="hero-dots" id="hero-dots"></div>
     <a class="hero-down" href="#profile" aria-label="아래로"></a>
   </section>
@@ -150,7 +150,31 @@
   </div>
 </dialog>
 
+<dialog class="reel" id="reel" aria-label="프로젝트 모아보기">
+  <div class="reel-head">
+    <p class="reel-count" id="reel-count"></p>
+    <div class="reel-tools">
+      <button class="reel-sound" id="reel-sound" aria-label="배경음악 끄기" aria-pressed="true"></button>
+      <button class="zoom-close reel-close" id="reel-close" aria-label="닫기"></button>
+    </div>
+  </div>
+  <div class="reel-stage">
+    <button class="hero-arrow is-prev" id="reel-prev" aria-label="이전 작업"></button>
+    <div class="frame is-wide reel-frame"><img id="reel-img" alt=""></div>
+    <button class="hero-arrow is-next" id="reel-next" aria-label="다음 작업"></button>
+  </div>
+  <div class="reel-foot">
+    <div class="reel-text">
+      <p class="reel-tag" id="reel-tag"></p>
+      <h2 id="reel-title"></h2>
+      <p class="reel-role" id="reel-role"></p>
+    </div>
+    <div class="reel-bars" id="reel-bars"></div>
+  </div>
+  <audio id="bgm" src="../assets/audio/bgm.mp3" loop preload="none"></audio>
+</dialog>
+
 <script src="../data.js?v=1"></script>
-<script src="main.js?v=1"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

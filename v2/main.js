@@ -23,13 +23,12 @@ function button(label, url, extra = "") {
 }
 
 const isVideo = (url) => /youtu\.?be/.test(url);
-const projectByKey = (key) => PROJECTS.find((p) => p.key === key);
 
 /* hero: full-screen pictures that fade into each other */
 const HERO = [
-  { img: `${ASSETS}/kv.jpg`, lead: "앞서가는 아티스트, 정해양", project: "poltergeist" },
-  { img: `${ASSETS}/compare/cel-wide-after.jpg`, lead: "Toon Shader & Character Interaction", project: "teacher" },
-  { img: `${ASSETS}/compare/cel-close-after.jpg`, lead: "2D & 3D Game Artist", project: "teacher" },
+  { img: `${ASSETS}/kv.jpg`, lead: "앞서가는 아티스트, 정해양" },
+  { img: `${ASSETS}/compare/cel-wide-after.jpg`, lead: "Toon Shader & Character Interaction" },
+  { img: `${ASSETS}/compare/cel-close-after.jpg`, lead: "2D & 3D Game Artist" },
 ];
 let heroIndex = 0;
 let heroTimer = 0;
@@ -44,8 +43,6 @@ function showHero(index) {
   lead.parentElement.classList.remove("is-in");
   void lead.offsetWidth;
   lead.parentElement.classList.add("is-in");
-  const video = projectByKey(slide.project).links.find((l) => isVideo(l.url));
-  el("hero-play").href = video.url;
   clearInterval(heroTimer);
   heroTimer = setInterval(() => showHero(heroIndex + 1), 7000);
 }
@@ -220,6 +217,82 @@ for (const item of MEDIA_ASSETS) {
   external(card, item.url);
   el("assets").append(card);
 }
+
+/* reel: the round play button on the hero plays every work in order, with background music */
+const REEL = [
+  ...PROJECTS.flatMap((p) => p.slides.map((n) => ({ group: p.title, tag: p.tag, title: p.title, role: p.role, slide: n }))),
+  ...ACTIVITIES.flatMap((a) => a.slides.map((n) => ({ group: a.title, tag: "대외활동", title: a.title, role: a.desc, slide: n }))),
+];
+const REEL_GROUPS = [...new Set(REEL.map((r) => r.group))];
+const REEL_SECONDS = 6;
+const reel = el("reel");
+const bgm = el("bgm");
+let reelIndex = 0;
+let reelTimer = 0;
+
+function showReel(index) {
+  reelIndex = (index + REEL.length) % REEL.length;
+  const item = REEL[reelIndex];
+  const img = el("reel-img");
+  img.src = `${ASSETS}/slides/${item.slide}.jpg`;
+  img.alt = `${item.title} 작업물`;
+  el("reel-tag").textContent = item.tag;
+  el("reel-title").textContent = item.title;
+  el("reel-role").textContent = item.role;
+  el("reel-count").textContent = `${String(reelIndex + 1).padStart(2, "0")} / ${REEL.length}`;
+  const group = REEL_GROUPS.indexOf(item.group);
+  [...el("reel-bars").children].forEach((bar, i) => {
+    bar.classList.toggle("is-done", i < group);
+    bar.classList.toggle("is-on", i === group);
+  });
+  const stage = document.querySelector(".reel-stage");
+  stage.classList.remove("is-swap");
+  void stage.offsetWidth;
+  stage.classList.add("is-swap");
+  clearTimeout(reelTimer);
+  reelTimer = setTimeout(() => showReel(reelIndex + 1), REEL_SECONDS * 1000);
+}
+
+function setSound(on) {
+  el("reel-sound").setAttribute("aria-pressed", on);
+  el("reel-sound").setAttribute("aria-label", on ? "배경음악 끄기" : "배경음악 켜기");
+  if (on) bgm.play().catch(() => setSound(false));
+  else bgm.pause();
+}
+
+REEL_GROUPS.forEach((name) => {
+  const bar = make("button");
+  bar.title = name;
+  bar.setAttribute("aria-label", `${name} 보기`);
+  bar.addEventListener("click", () => showReel(REEL.findIndex((r) => r.group === name)));
+  el("reel-bars").append(bar);
+});
+el("hero-play").addEventListener("click", () => {
+  reel.showModal();
+  clearInterval(heroTimer);
+  bgm.volume = 0.5;
+  setSound(true);
+  showReel(0);
+});
+function stopReel() {
+  clearTimeout(reelTimer);
+  bgm.pause();
+  bgm.currentTime = 0;
+  showHero(heroIndex);
+}
+// Esc closes the popup too, so the music is stopped on the close event as well as on the button
+reel.addEventListener("close", stopReel);
+el("reel-close").addEventListener("click", () => {
+  reel.close();
+  stopReel();
+});
+el("reel-prev").addEventListener("click", () => showReel(reelIndex - 1));
+el("reel-next").addEventListener("click", () => showReel(reelIndex + 1));
+el("reel-sound").addEventListener("click", () => setSound(el("reel-sound").getAttribute("aria-pressed") !== "true"));
+reel.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") showReel(reelIndex + 1);
+  if (e.key === "ArrowLeft") showReel(reelIndex - 1);
+});
 
 /* header: mark the section on screen */
 const navLinks = [...el("gnb-nav").querySelectorAll("a")];

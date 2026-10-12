@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정해양 — Portfolio ver.2</title>
+<meta name="description" content="2D & 3D 게임 아티스트 정해양의 포트폴리오. 게임 아트, 캐릭터 애니메이션, UI, Unity 개발 작업을 모았습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+<header class="gnb">
+  <a class="gnb-logo" href="#main" aria-label="맨 위로"><span>Jeong</span><i></i><span>Haeyang</span></a>
+  <nav class="gnb-nav" id="gnb-nav" aria-label="섹션 이동">
+    <a href="#main">메인</a>
+    <a href="#profile">프로필</a>
+    <a href="#project">프로젝트</a>
+    <a href="#activity">대외활동</a>
+    <a href="#media">미디어</a>
+  </nav>
+  <div class="gnb-side">
+    <a href="mailto:970626ls@naver.com" aria-label="메일 보내기" title="메일 보내기"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z M3 6l9 7 9-7"/></svg></a>
+    <a href="https://github.com/Ryukon97" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><img src="../assets/icons/github.png" alt=""></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="main" aria-label="메인">
+    <div class="hero-slides" id="hero-slides"></div>
+    <h1 class="hero-logo">
+      <span class="hero-logo-a">Jeong</span>
+      <i aria-hidden="true"></i>
+      <span class="hero-logo-b">Haeyang</span>
+      <small>정 해 양 · 포 트 폴 리 오</small>
+    </h1>
+    <p class="hero-lead"><i aria-hidden="true"></i><span id="hero-lead"></span></p>
+    <button class="hero-arrow is-prev" id="hero-prev" aria-label="이전 화면"></button>
+    <button class="hero-arrow is-next" id="hero-next" aria-label="다음 화면"></button>
+    <a class="hero-play" id="hero-play" target="_blank" rel="noopener" aria-label="플레이 영상 보기" title="플레이 영상 보기"></a>
+    <div class="hero-dots" id="hero-dots"></div>
+    <a class="hero-down" href="#profile" aria-label="아래로"></a>
+  </section>
+
+  <section class="sec sec-cream profile" id="profile" aria-labelledby="profile-title">
+    <div class="emblem" aria-hidden="true"></div>
+    <div class="sec-title is-dark reveal"><h2 id="profile-title">프로필</h2><p>Profile</p><i></i></div>
+    <div class="profile-body">
+      <div class="profile-art reveal">
+        <div class="frame"><img src="../assets/profile.jpg" alt="정해양 프로필 사진" width="378" height="580"></div>
+      </div>
+      <div class="profile-info reveal">
+        <p class="dept">2D &amp; 3D Game Artist</p>
+        <p class="name-en">Jeong Haeyang</p>
+        <p class="name-ko">정해양</p>
+        <p class="motto">앞서가는 아티스트</p>
+        <div class="btn-row">
+          <a class="btn" href="mailto:970626ls@naver.com"><span>970626ls@naver.com</span></a>
+          <a class="btn is-line" href="tel:010-4550-5260"><span>010-4550-5260</span></a>
+        </div>
+        <div class="profile-panels">
+          <div class="panel">
+            <h3>학력</h3>
+            <ul class="history">
+              <li><strong>영산대학교</strong><span>게임콘텐츠학과</span></li>
+              <li><strong>디벨로켓</strong><span>AI를 활용한 메타버스 Unity 게임 부트캠프</span></li>
+            </ul>
+            <h3>경력</h3>
+            <ul class="history">
+              <li><strong>본코스메틱</strong><span>마케팅 주임</span></li>
+              <li><strong>Pixel Chroma</strong><span>마케팅 담당</span></li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>사용 툴</h3>
+            <dl class="tools">
+              <dt>Art &amp; Design</dt><dd><span>Photoshop</span><span>Premiere Pro</span><span>Blender</span></dd>
+              <dt>Engine &amp; Dev</dt><dd><span>Unity 6</span><span>C#</span><span>Shader / HLSL</span><span>Git</span></dd>
+              <dt>Platform</dt><dd><span>Steam</span><span>Android</span><span>Meta Quest</span></dd>
+              <dt>AI-Assisted</dt><dd><span>Claude</span><span>ChatGPT</span></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-dark project" id="project" aria-labelledby="project-title">
+    <div class="sec-title reveal"><h2 id="project-title">프로젝트</h2><p>Project</p><i></i></div>
+    <div class="cards-wrap reveal">
+      <button class="cards-arrow is-prev" id="cards-prev" aria-label="이전 프로젝트 카드"></button>
+      <div class="cards" id="cards"></div>
+      <button class="cards-arrow is-next" id="cards-next" aria-label="다음 프로젝트 카드"></button>
+    </div>
+  </section>
+
+  <section class="sec sec-cream detail" id="detail" aria-label="프로젝트 상세">
+    <div class="emblem" aria-hidden="true"></div>
+    <div class="detail-body">
+      <div class="detail-art reveal"><div class="frame"><img id="d-img" alt=""></div></div>
+      <div class="detail-info reveal">
+        <p class="dept" id="d-tag"></p>
+        <p class="name-en" id="d-role"></p>
+        <p class="name-ko" id="d-title"></p>
+        <dl class="meta" id="d-meta"></dl>
+        <div class="btn-row" id="d-links"></div>
+        <div class="selector" id="selector" role="tablist" aria-label="프로젝트 선택"></div>
+      </div>
+    </div>
+    <div class="works" id="d-works"></div>
+  </section>
+
+  <section class="sec sec-gray activity" id="activity" aria-labelledby="activity-title">
+    <div class="sec-title is-dark reveal"><h2 id="activity-title">대외활동</h2><p>Activity</p><i></i></div>
+    <div class="news reveal">
+      <article class="news-featured">
+        <div class="frame is-wide"><img id="a-img" alt=""><span class="badge" id="a-badge"></span></div>
+        <h3 id="a-title"></h3>
+        <p id="a-desc"></p>
+        <div class="btn-row is-center" id="a-links"></div>
+      </article>
+      <ul class="news-list" id="a-list"></ul>
+    </div>
+  </section>
+
+  <section class="sec sec-dark media" id="media" aria-labelledby="media-title">
+    <div class="sec-title reveal"><h2 id="media-title">미디어</h2><p>Media</p><i></i></div>
+    <div class="videos reveal" id="videos"></div>
+    <div class="assets reveal" id="assets"></div>
+    <div class="more reveal"><i></i><a class="btn is-white" href="https://github.com/Ryukon97" target="_blank" rel="noopener"><span>GitHub 전체보기</span></a></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="gnb-logo"><span>Jeong</span><i></i><span>Haeyang</span></p>
+  <p>정해양 · 2D &amp; 3D Game Artist · <a href="mailto:970626ls@naver.com">970626ls@naver.com</a> · <a href="../index.html">ver.1 보기</a></p>
+</footer>
+
+<dialog class="zoom" id="zoom" aria-label="확대 이미지">
+  <div class="zoom-stage" id="zoom-stage"><img id="zoom-img" alt=""></div>
+  <button class="zoom-close" id="zoom-close" aria-label="닫기"></button>
+  <div class="zoom-bar">
+    <output id="zoom-value">100%</output>
+    <button id="zoom-out" aria-label="축소"></button>
+    <input id="zoom-range" type="range" min="50" max="300" step="10" value="100" aria-label="확대 비율">
+    <button id="zoom-in" class="is-plus" aria-label="확대"></button>
+  </div>
+</dialog>
+
+<script src="../data.js?v=1"></script>
+<script src="main.js?v=1"></script>
+</body>
+</html>

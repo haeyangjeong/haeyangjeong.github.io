@@ -7,9 +7,9 @@
 <meta name="description" content="2D & 3D 게임 아티스트 정해양의 포트폴리오. 게임 아트, 캐릭터 애니메이션, UI, Unity 개발 작업을 모았습니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Serif+KR:wght@400;500&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
     <a href="#media">미디어</a>
   </nav>
   <div class="gnb-side">
-    <a href="mailto:970626ls@naver.com" aria-label="메일 보내기" title="메일 보내기"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z M3 6l9 7 9-7"/></svg></a>
+    <a href="mailto:rezerorem8@gmail.com" aria-label="메일 보내기" title="메일 보내기"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z M3 6l9 7 9-7"/></svg></a>
     <a href="https://github.com/Ryukon97" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><img src="../assets/icons/github.png" alt=""></a>
   </div>
 </header>
@@ -40,7 +40,13 @@
     <p class="hero-lead"><i aria-hidden="true"></i><span id="hero-lead"></span></p>
     <button class="hero-arrow is-prev" id="hero-prev" aria-label="이전 화면"></button>
     <button class="hero-arrow is-next" id="hero-next" aria-label="다음 화면"></button>
-    <button class="hero-play" id="hero-play" aria-label="프로젝트 PV 영상 재생" title="프로젝트 PV 영상"></button>
+    <button class="hero-play" id="hero-play" aria-label="포트폴리오 한눈에 보기 영상 재생">
+      <span class="hero-play-inner">
+        <i aria-hidden="true"></i>
+        <b>포트폴리오 한눈에 보기</b>
+        <em>2D <s>✦</s> 애니메이션 <s>✦</s> 셀 셰이더</em>
+      </span>
+    </button>
     <div class="hero-dots" id="hero-dots"></div>
     <a class="hero-down" href="#profile" aria-label="아래로"></a>
   </section>
@@ -53,37 +59,36 @@
         <div class="frame"><img src="../assets/profile.jpg" alt="정해양 프로필 사진" width="378" height="580"></div>
       </div>
       <div class="profile-info reveal">
-        <p class="dept">2D &amp; 3D Game Artist</p>
-        <p class="name-en">Jeong Haeyang</p>
-        <p class="name-ko">정해양</p>
-        <p class="motto">앞서가는 아티스트</p>
-        <div class="btn-row">
-          <a class="btn" href="mailto:970626ls@naver.com"><span>970626ls@naver.com</span></a>
-          <a class="btn is-line" href="tel:010-4550-5260"><span>010-4550-5260</span></a>
+        <p class="profile-job">2D Artist</p>
+        <p class="profile-name"><strong>정해양</strong><span>Jeong Hae Yang</span></p>
+        <div class="pill-row">
+          <a class="pill" href="mailto:rezerorem8@gmail.com">rezerorem8@gmail.com</a>
+          <a class="pill" href="tel:010-4550-5260">010 4550 5260</a>
         </div>
         <div class="profile-panels">
           <div class="panel">
             <h3>학력</h3>
             <ul class="history">
               <li><strong>영산대학교</strong><span>게임콘텐츠학과</span></li>
-              <li><strong>디벨로켓</strong><span>AI를 활용한 메타버스 Unity 게임 부트캠프</span></li>
-            </ul>
-            <h3>경력</h3>
-            <ul class="history">
-              <li><strong>본코스메틱</strong><span>마케팅 주임</span></li>
-              <li><strong>Pixel Chroma</strong><span>마케팅 담당</span></li>
+              <li><strong>디벨로켓</strong><span>AI를 활용한 메타버스 Unity 부트캠프</span></li>
             </ul>
           </div>
           <div class="panel">
-            <h3>사용 툴</h3>
-            <dl class="tools">
-              <dt>Art &amp; Design</dt><dd><span>Photoshop</span><span>Premiere Pro</span><span>Blender</span></dd>
-              <dt>Engine &amp; Dev</dt><dd><span>Unity 6</span><span>C#</span><span>Shader / HLSL</span><span>Git</span></dd>
-              <dt>Platform</dt><dd><span>Steam</span><span>Android</span><span>Meta Quest</span></dd>
-              <dt>AI-Assisted</dt><dd><span>Claude</span><span>ChatGPT</span></dd>
-            </dl>
+            <h3>경력</h3>
+            <ul class="history">
+              <li><strong>본 코스메틱</strong><span>사내 전체 마케팅 담당</span></li>
+            </ul>
           </div>
         </div>
+      </div>
+      <div class="panel profile-tools reveal">
+        <h3>사용 가능 툴</h3>
+        <dl class="tools">
+            <dt>Art &amp; Design</dt><dd><span class="tool"><i style="--icon:url(../assets/icons/tools/adobephotoshop.svg)"></i>Photoshop</span><span class="tool"><i style="--icon:url(../assets/icons/tools/adobepremierepro.svg)"></i>Premiere Pro</span><span class="tool"><i style="--icon:url(../assets/icons/tools/blender.svg)"></i>Blender</span></dd>
+            <dt>Engine &amp; Dev</dt><dd><span class="tool"><i style="--icon:url(../assets/icons/tools/unity.svg)"></i>Unity 6</span><span class="tool"><i style="--icon:url(../assets/icons/tools/csharp.svg)"></i>C#</span><span class="tool"><i style="--icon:url(../assets/icons/tools/shader.svg)"></i>Shader / HLSL</span><span class="tool"><i style="--icon:url(../assets/icons/tools/git.svg)"></i>Git</span></dd>
+            <dt>Platform</dt><dd><span class="tool"><i style="--icon:url(../assets/icons/tools/steam.svg)"></i>Steam</span><span class="tool"><i style="--icon:url(../assets/icons/tools/android.svg)"></i>Android</span><span class="tool"><i style="--icon:url(../assets/icons/tools/meta.svg)"></i>Meta Quest</span></dd>
+            <dt>AI-Assisted</dt><dd><span class="tool"><i style="--icon:url(../assets/icons/tools/claude.svg)"></i>Claude</span><span class="tool"><i style="--icon:url(../assets/icons/tools/openai.svg)"></i>ChatGPT</span></dd>
+        </dl>
       </div>
     </div>
   </section>
@@ -136,7 +141,7 @@
 
 <footer class="footer">
   <p class="gnb-logo"><span>Jeong</span><i></i><span>Haeyang</span></p>
-  <p>정해양 · 2D &amp; 3D Game Artist · <a href="mailto:970626ls@naver.com">970626ls@naver.com</a> · <a href="../index.html">ver.1 보기</a></p>
+  <p>정해양 · 2D &amp; 3D Game Artist · <a href="mailto:rezerorem8@gmail.com">rezerorem8@gmail.com</a> · <a href="../index.html">ver.1 보기</a></p>
 </footer>
 
 <dialog class="zoom" id="zoom" aria-label="확대 이미지">

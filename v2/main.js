@@ -24,12 +24,7 @@ function button(label, url, extra = "") {
 
 const isVideo = (url) => /youtu\.?be/.test(url);
 
-/* hero: full-screen pictures that fade into each other */
-const HERO = [
-  { img: `${ASSETS}/kv.jpg`, lead: "앞서가는 아티스트, 정해양" },
-  { img: `${ASSETS}/compare/cel-wide-after.jpg`, lead: "Toon Shader & Character Interaction" },
-  { img: `${ASSETS}/compare/cel-close-after.jpg`, lead: "2D & 3D Game Artist" },
-];
+/* hero: full-screen pictures that fade into each other; the list itself lives in hero.js */
 let heroIndex = 0;
 let heroTimer = 0;
 
@@ -40,16 +35,17 @@ function showHero(index) {
   [...el("hero-dots").children].forEach((node, i) => node.classList.toggle("is-on", i === heroIndex));
   const lead = el("hero-lead");
   lead.textContent = slide.lead;
+  lead.parentElement.hidden = !slide.lead;
   lead.parentElement.classList.remove("is-in");
   void lead.offsetWidth;
   lead.parentElement.classList.add("is-in");
   clearInterval(heroTimer);
-  heroTimer = setInterval(() => showHero(heroIndex + 1), 7000);
+  heroTimer = setInterval(() => showHero(heroIndex + 1), HERO_SECONDS * 1000);
 }
 
 HERO.forEach((slide, i) => {
   const picture = make("div", "hero-slide");
-  picture.style.backgroundImage = `url("${slide.img}")`;
+  picture.style.backgroundImage = `url("${ASSETS}/hero/${slide.img}")`;
   el("hero-slides").append(picture);
   const dot = make("button");
   dot.setAttribute("aria-label", `${i + 1}번째 화면`);

@@ -9,7 +9,7 @@ const PROJECTS = [
     slides: ["18"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://github.com/Ryukon97/Poltergeist" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/Poltergeist" },
     ],
   },
   {
@@ -21,7 +21,7 @@ const PROJECTS = [
     slides: ["20", "21"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/3L-w9T-UCMY" },
-      { label: "GIT", url: "https://github.com/Ryukon97/Mirrors" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/Mirrors" },
     ],
   },
   {
@@ -34,7 +34,7 @@ const PROJECTS = [
     links: [
       { label: "상점페이지", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://github.com/Ryukon97/BackTogether" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/BackTogether" },
     ],
   },
   {
@@ -47,7 +47,7 @@ const PROJECTS = [
     links: [
       { label: "상점페이지", url: "https://store.steampowered.com/app/5023800/Pixel_Chroma/?l=koreana" },
       { label: "공식 트레일러", url: "https://youtu.be/hEiYHdttB30" },
-      { label: "GIT", url: "https://github.com/Ryukon97/PixelChroma" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/PixelChroma" },
     ],
   },
   {
@@ -68,7 +68,7 @@ const PROJECTS = [
     slides: ["24", "25", "26", "27", "28"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/64PHtlV8q3M" },
-      { label: "GIT", url: "https://github.com/Ryukon97/VRProject" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/VRProject" },
     ],
   },
   {
@@ -80,7 +80,7 @@ const PROJECTS = [
     slides: ["29"],
     links: [
       { label: "플레이 영상", url: "https://youtu.be/01IqTF0F9SA" },
-      { label: "GIT", url: "https://github.com/Ryukon97/MasterTool" },
+      { label: "GIT", url: "https://github.com/haeyangjeong/MasterTool" },
     ],
   },
 ];

@@ -198,16 +198,23 @@ for (const p of PROJECTS) {
 }
 
 const MEDIA_ASSETS = [
-  ...PROJECTS.flatMap((p) => p.links.filter((l) => l.url.includes("steampowered")).map((l) => ({ kind: "Steam", icon: "steam", title: `${p.title} 상점페이지`, url: l.url }))),
-  ...HOTSPOTS[31].map((s) => ({ kind: "YouTube", icon: "youtube", title: s.label, url: s.url })),
+  ...PROJECTS.flatMap((p) => p.links.filter((l) => l.url.includes("steampowered")).map((l) => ({ kind: "Steam", icon: "steam", thumb: p.key, title: `${p.title} 상점페이지`, url: l.url }))),
+  ...HOTSPOTS[31].map((s, i) => ({ kind: "YouTube", icon: "youtube", thumb: i ? "media-channel" : "media-ads", title: s.label, url: s.url })),
   { kind: "GitHub", icon: "github", title: "Ryukon97", url: "https://github.com/Ryukon97" },
 ];
 for (const item of MEDIA_ASSETS) {
   const card = make("a", "asset");
-  const icon = make("img");
+  const top = make("span", item.thumb ? "asset-top" : "asset-top is-icon");
+  if (item.thumb) {
+    const pic = make("img", "asset-pic");
+    pic.src = `${ASSETS}/thumbs/${item.thumb}.jpg`;
+    pic.alt = "";
+    pic.loading = "lazy";
+    top.append(pic);
+  }
+  const icon = make("img", "asset-icon");
   icon.src = `${ASSETS}/icons/${item.icon}.png`;
   icon.alt = "";
-  const top = make("span", "asset-top");
   top.append(icon);
   card.append(top, make("em", "", item.kind), make("b", "", item.title));
   external(card, item.url);

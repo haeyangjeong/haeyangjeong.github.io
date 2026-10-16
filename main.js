@@ -1,20 +1,12 @@
+// ver.2 — content comes from ../data.js (PROJECTS, ACTIVITIES, HOTSPOTS, COMPARES)
 const el = (id) => document.getElementById(id);
+const ASSETS = "assets";
 
-function buildCompare(name, title, labels = ["Before", "After"]) {
-  const box = document.createElement("div");
-  box.className = "compare";
-  box.innerHTML = `<img alt="" loading="lazy"><img class="compare-before" alt="" loading="lazy"><span class="compare-tag is-before">Before</span><span class="compare-tag is-after">After</span><span class="compare-handle"></span><input type="range" min="0" max="100" step="0.1" value="50">`;
-  const [after, before] = box.querySelectorAll("img");
-  after.src = `assets/compare/${name}-after.jpg`;
-  after.alt = `${title} After`;
-  before.src = `assets/compare/${name}-before.jpg`;
-  before.alt = `${title} Before`;
-  box.querySelector(".is-before").textContent = labels[0];
-  box.querySelector(".is-after").textContent = labels[1];
-  const range = box.querySelector("input");
-  range.setAttribute("aria-label", `${title} ${labels.join(" / ")} 비교`);
-  range.addEventListener("input", () => box.style.setProperty("--pos", `${range.value}%`));
-  return box;
+function make(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
 
 function external(a, url) {
@@ -23,41 +15,88 @@ function external(a, url) {
   a.rel = "noopener";
 }
 
-function replay(node) {
-  node.classList.remove("is-swap");
-  void node.offsetWidth;
-  node.classList.add("is-swap");
+function button(label, url, extra = "") {
+  const a = make("a", `btn ${extra}`.trim());
+  a.append(make("span", "", label));
+  external(a, url);
+  return a;
+}
+
+const isVideo = (url) => /youtu\.?be/.test(url);
+
+/* hero: full-screen pictures that fade into each other; the list itself lives in hero.js */
+let heroIndex = 0;
+let heroTimer = 0;
+
+function showHero(index) {
+  heroIndex = (index + HERO.length) % HERO.length;
+  const slide = HERO[heroIndex];
+  [...el("hero-slides").children].forEach((node, i) => node.classList.toggle("is-on", i === heroIndex));
+  [...el("hero-dots").children].forEach((node, i) => node.classList.toggle("is-on", i === heroIndex));
+  const lead = el("hero-lead");
+  lead.textContent = slide.lead;
+  lead.parentElement.hidden = !slide.lead;
+  lead.parentElement.classList.remove("is-in");
+  void lead.offsetWidth;
+  lead.parentElement.classList.add("is-in");
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => showHero(heroIndex + 1), HERO_SECONDS * 1000);
+}
+
+HERO.forEach((slide, i) => {
+  const picture = make("div", "hero-slide");
+  picture.style.backgroundImage = `url("${ASSETS}/hero/${slide.img}")`;
+  el("hero-slides").append(picture);
+  const dot = make("button");
+  dot.setAttribute("aria-label", `${i + 1}번째 화면`);
+  dot.addEventListener("click", () => showHero(i));
+  el("hero-dots").append(dot);
+});
+el("hero-prev").addEventListener("click", () => showHero(heroIndex - 1));
+el("hero-next").addEventListener("click", () => showHero(heroIndex + 1));
+showHero(0);
+
+/* before/after comparison: the slider reveals the first picture over the second */
+function buildCompare(name, title, labels = ["Before", "After"]) {
+  const box = make("div", "compare");
+  box.innerHTML = `<img alt="" loading="lazy"><img class="compare-before" alt="" loading="lazy"><span class="compare-tag is-before"></span><span class="compare-tag is-after"></span><span class="compare-handle"></span><input type="range" min="0" max="100" step="0.1" value="50">`;
+  const [after, before] = box.querySelectorAll("img");
+  after.src = `${ASSETS}/compare/${name}-after.jpg`;
+  after.alt = `${title} ${labels[1]}`;
+  before.src = `${ASSETS}/compare/${name}-before.jpg`;
+  before.alt = `${title} ${labels[0]}`;
+  box.querySelector(".is-before").textContent = labels[0];
+  box.querySelector(".is-after").textContent = labels[1];
+  const range = box.querySelector("input");
+  range.setAttribute("aria-label", `${title} ${labels.join(" / ")} 비교`);
+  range.addEventListener("input", () => box.style.setProperty("--pos", `${range.value}%`));
+  return box;
+}
+
+function slideImage(n, title) {
+  const img = make("img");
+  img.src = `${ASSETS}/slides/${n}.jpg`;
+  img.alt = `${title} 작업물`;
+  img.loading = "lazy";
+  return img;
 }
 
 function showWorks(container, item) {
   container.replaceChildren();
   for (const n of item.slides) {
-    const work = document.createElement("div");
-    work.className = "work";
-    const compares = COMPARES[Number(n)];
-    if (compares) {
-      // one card per comparison
-      for (const c of compares) {
-        const card = document.createElement("div");
-        const title = document.createElement("h4");
-        const part = document.createElement("small");
-        card.className = "work work-compare";
-        part.textContent = c.sub || "";
-        title.append(c.title, " ", part);
-        card.append(title, buildCompare(c.name, [c.title, c.sub].filter(Boolean).join(" "), c.labels));
-        container.append(card);
-      }
-      continue;
+    for (const c of COMPARES[Number(n)] || []) {
+      const card = make("div", "work is-compare");
+      const title = make("h4", "", `${c.title} `);
+      title.append(make("small", "", c.sub || ""));
+      card.append(title, buildCompare(c.name, [c.title, c.sub].filter(Boolean).join(" "), c.labels));
+      container.append(card);
     }
-    const img = document.createElement("img");
-    img.src = `assets/slides/${n}.jpg`;
-    img.alt = `${item.title} 작업물`;
-    img.loading = "lazy";
-    work.append(img);
+    if (COMPARES[Number(n)]) continue;
+    const work = make("div", "work");
+    work.append(slideImage(n, item.title));
     for (const spot of HOTSPOTS[Number(n)] || []) {
-      const a = document.createElement("a");
+      const a = make("a", "hot");
       const [x, y, w, h] = spot.box;
-      a.className = "hot";
       a.style.cssText = `left:${x}%;top:${y}%;width:${w}%;height:${h}%`;
       a.setAttribute("aria-label", `${spot.label} 열기`);
       a.title = spot.label;
@@ -66,232 +105,205 @@ function showWorks(container, item) {
     }
     container.append(work);
   }
-  replay(container);
 }
 
-// one row of buttons; pressing one shows that item right on the page
-function buildTabs(tabsEl, items, onSelect) {
-  for (const item of items) {
-    const b = document.createElement("button");
-    const label = document.createElement("span");
-    b.className = "tab";
-    b.setAttribute("role", "tab");
-    b.dataset.key = item.key;
-    label.textContent = item.title;
-    b.append(label);
-    tabsEl.append(b);
-  }
-  const select = (key) => {
-    for (const b of tabsEl.children) {
-      const on = b.dataset.key === key;
-      b.classList.toggle("is-active", on);
-      b.setAttribute("aria-selected", on);
-    }
-    onSelect(items.find((x) => x.key === key));
-  };
-  tabsEl.addEventListener("click", (e) => {
-    const b = e.target.closest(".tab");
-    if (b) select(b.dataset.key);
+/* project: card carousel on the dark section, details right below */
+let projectIndex = 0;
+
+function showProject(index, scroll) {
+  projectIndex = (index + PROJECTS.length) % PROJECTS.length;
+  const p = PROJECTS[projectIndex];
+  [...el("cards").children].forEach((card, i) => card.classList.toggle("is-on", i === projectIndex));
+  [...el("selector").children].forEach((thumb, i) => {
+    thumb.classList.toggle("is-on", i === projectIndex);
+    thumb.setAttribute("aria-selected", i === projectIndex);
   });
-  select(items[0].key);
-  return select;
+  const cards = el("cards");
+  const card = cards.children[projectIndex];
+  cards.scrollTo({ left: card.offsetLeft - (cards.clientWidth - card.offsetWidth) / 2, behavior: "smooth" });
+
+  el("d-img").src = `${ASSETS}/thumbs/${p.key}.jpg`;
+  el("d-img").alt = `${p.title} 대표 이미지`;
+  el("d-tag").textContent = p.tag;
+  el("d-role").textContent = p.role;
+  el("d-title").textContent = p.title;
+  el("d-title").classList.toggle("is-long", p.title.length > 14);
+  el("d-meta").replaceChildren(...Object.entries(p.meta).flatMap(([k, v]) => [make("dt", "", k), make("dd", "", v)]));
+  el("d-links").replaceChildren(...p.links.map((l, i) => button(l.label, l.url, i ? "is-line" : "")));
+  showWorks(el("d-works"), p);
+  const body = document.querySelector(".detail-body");
+  body.classList.remove("is-swap");
+  void body.offsetWidth;
+  body.classList.add("is-swap");
+  if (scroll) el("detail").scrollIntoView();
 }
 
-const selectProject = buildTabs(el("project-tabs"), PROJECTS, (p) => {
-  el("stage-img").src = `assets/thumbs/${p.key}.jpg`;
-  el("stage-img").alt = `${p.title} 대표 이미지`;
-  replay(el("stage-img").parentElement);
-  el("stage-tag").textContent = p.tag;
-  el("stage-title").textContent = p.title;
-  el("stage-role").textContent = p.role;
-  const meta = el("stage-meta");
-  meta.replaceChildren();
-  for (const [k, v] of Object.entries(p.meta)) {
-    const row = document.createElement("div");
-    const dt = document.createElement("dt");
-    const dd = document.createElement("dd");
-    dt.textContent = k;
-    dd.textContent = v;
-    row.append(dt, dd);
-    meta.append(row);
-  }
-  const links = el("stage-links");
-  links.replaceChildren();
-  for (const link of p.links) {
-    const a = document.createElement("a");
-    const label = document.createElement("span");
-    a.className = "btn btn-sm";
-    label.textContent = link.label;
-    a.append(label);
-    external(a, link.url);
-    links.append(a);
-  }
-  showWorks(el("project-works"), p);
-});
+PROJECTS.forEach((p, i) => {
+  const card = make("button", "card");
+  card.innerHTML = `<span class="card-frame"><img alt="" loading="lazy"><span class="card-text"><b></b><em></em></span><span class="card-more">상세보기</span></span>`;
+  card.querySelector("img").src = `${ASSETS}/thumbs/${p.key}.jpg`;
+  card.querySelector("b").textContent = p.title;
+  card.querySelector("em").textContent = p.role;
+  card.addEventListener("click", () => showProject(i, true));
+  el("cards").append(card);
 
-buildTabs(el("activity-tabs"), ACTIVITIES, (a) => {
-  el("activity-desc").textContent = a.desc;
-  // the video tab also offers its YouTube links as buttons
-  const links = el("activity-links");
-  links.replaceChildren();
-  for (const link of a.key === "video" ? HOTSPOTS[31] : []) {
-    const btn = document.createElement("a");
-    const icon = document.createElement("img");
-    const label = document.createElement("span");
-    btn.className = "link-pill";
-    icon.src = "assets/icons/youtube.png";
-    icon.alt = "";
-    label.textContent = link.label;
-    btn.append(icon, label);
-    external(btn, link.url);
-    links.append(btn);
-  }
-  showWorks(el("activity-works"), a);
+  const thumb = make("button", "thumb");
+  thumb.setAttribute("role", "tab");
+  thumb.title = p.title;
+  thumb.innerHTML = `<img alt="">`;
+  thumb.querySelector("img").src = `${ASSETS}/thumbs/${p.key}.jpg`;
+  thumb.querySelector("img").alt = p.title;
+  thumb.addEventListener("click", () => showProject(i, false));
+  el("selector").append(thumb);
 });
+el("cards-prev").addEventListener("click", () => showProject(projectIndex - 1, false));
+el("cards-next").addEventListener("click", () => showProject(projectIndex + 1, false));
+showProject(0, false);
 
-// home screen: left banners are built from the project list
-function goToProject(key) {
-  selectProject(key);
-  el("project").scrollIntoView();
+/* activity: featured picture on the left, list on the right */
+const ACTIVITY_BADGE = { video: "마케팅", goods: "굿즈", banner: "일러스트" };
+
+function showActivity(index) {
+  const a = ACTIVITIES[index];
+  [...el("a-list").children].forEach((row, i) => row.classList.toggle("is-on", i === index));
+  el("a-img").src = `${ASSETS}/slides/${a.slides[0]}.jpg`;
+  el("a-img").alt = `${a.title} 작업물`;
+  el("a-badge").textContent = ACTIVITY_BADGE[a.key];
+  el("a-title").textContent = a.title;
+  el("a-desc").textContent = a.desc;
+  const spots = HOTSPOTS[Number(a.slides[0])] || [];
+  el("a-links").replaceChildren(...spots.map((s, i) => button(s.label, s.url, i ? "is-line" : "")));
 }
 
+ACTIVITIES.forEach((a, i) => {
+  const row = make("li");
+  const item = make("button");
+  item.append(make("span", "badge", ACTIVITY_BADGE[a.key]), make("b", "", a.title), make("em", "", a.desc));
+  item.addEventListener("click", () => showActivity(i));
+  row.append(item);
+  el("a-list").append(row);
+});
+showActivity(0);
+
+/* media: every video link of the projects, then the store and channel links */
 for (const p of PROJECTS) {
-  const b = document.createElement("button");
-  b.className = "banner";
-  b.textContent = p.title;
-  b.addEventListener("click", () => goToProject(p.key));
-  el("banners").append(b);
+  const link = p.links.find((l) => isVideo(l.url));
+  if (!link) continue;
+  const card = make("a", "video");
+  card.innerHTML = `<span class="frame is-wide"><img alt="" loading="lazy"><i class="play"></i><b></b></span>`;
+  card.querySelector("img").src = `${ASSETS}/thumbs/${p.key}.jpg`;
+  card.querySelector("b").textContent = `${p.title} — ${link.label}`;
+  external(card, link.url);
+  el("videos").append(card);
 }
 
-// top-right card: arrows switch between the Steam games, the card itself opens the store page
-const FEATURES = [
-  { key: "pixelchroma", name: "Pixel Chroma", url: "https://store.steampowered.com/app/5023800/Pixel_Chroma/" },
-  { key: "backtogether", name: "Back Together", url: "https://store.steampowered.com/app/5086830/BACK_TOGETHER/" },
+const MEDIA_ASSETS = [
+  ...PROJECTS.flatMap((p) => p.links.filter((l) => l.url.includes("steampowered")).map((l) => ({ kind: "Steam", icon: "steam", thumb: p.key, title: `${p.title} 상점페이지`, url: l.url }))),
+  ...HOTSPOTS[31].map((s, i) => ({ kind: "YouTube", icon: "youtube", thumb: i ? "media-channel" : "media-ads", title: s.label, url: s.url })),
+  { kind: "GitHub", icon: "github", thumb: "media-github", title: "Ryukon97", url: "https://github.com/Ryukon97" },
 ];
-let featureIndex = 0;
-
-function showFeature(step) {
-  featureIndex = (featureIndex + step + FEATURES.length) % FEATURES.length;
-  const f = FEATURES[featureIndex];
-  el("feature-link").href = f.url;
-  el("feature-link").setAttribute("aria-label", `${f.name} Steam 상점 페이지 열기`);
-  el("feature-name").textContent = f.name;
-  el("feature-img").src = `assets/thumbs/${f.key}.jpg`;
-  if (step) replay(el("feature-link"));
-}
-
-el("feature-prev").addEventListener("click", () => showFeature(-1));
-el("feature-next").addEventListener("click", () => showFeature(1));
-showFeature(0);
-
-// back-to-top button appears once the home screen is scrolled past
-const toTop = el("to-top");
-const toggleTop = () => toTop.classList.toggle("is-shown", scrollY > innerHeight * 0.6);
-addEventListener("scroll", toggleTop, { passive: true });
-toggleTop();
-
-// overview popup: every project in one scrolling sheet, built the first time it opens
-const overview = el("overview");
-
-// "2026.08.31 – 2026.09.30" -> "2026.08.31~09.30" (the year is repeated only when it differs)
-function shortPeriod(period) {
-  const [from, to] = period.split("–").map((x) => x.trim());
-  return `${from}~${to.slice(0, 5) === from.slice(0, 5) ? to.slice(5) : to}`;
-}
-
-const slashed = (text) => text.replaceAll(" · ", " / ");
-
-function buildOverview() {
-  const body = el("overview-body");
-  // projects first, then outside activities (goods, banner) and video editing last
-  const activity = (key) => ACTIVITIES.find((x) => x.key === key);
-  const entries = [
-    ...PROJECTS.map((p) => ({
-      tag: p.tag,
-      title: p.title,
-      role: p.role,
-      facts: [shortPeriod(p.meta["제작기간"]), p.meta["개발인원"], p.meta["장르"], p.meta["플랫폼"]].join(" / "),
-      slides: p.slides,
-      links: p.links,
-    })),
-    // goods and banner belong to the same group, so only the first carries the label
-    ...["goods", "banner"].map((k, i) => ({ tag: i ? "" : "대외활동", title: activity(k).title, role: "", facts: slashed(activity(k).desc), slides: activity(k).slides, links: [] })),
-    {
-      tag: "마케팅 활동",
-      title: activity("video").title,
-      role: "",
-      facts: slashed(activity("video").desc),
-      slides: activity("video").slides,
-      links: (HOTSPOTS[31] || []).map((s) => ({ label: s.label, url: s.url })),
-    },
-  ];
-  for (const p of entries) {
-    const item = document.createElement("section");
-    item.className = "overview-item";
-    item.innerHTML = `<div class="overview-top"><div><p class="plate"></p><h3></h3><p class="role"></p><p class="facts"></p></div><div class="overview-links"></div></div><div class="shots"></div>`;
-    item.querySelector(".plate").textContent = p.tag;
-    item.querySelector(".plate").hidden = !p.tag;
-    item.querySelector("h3").textContent = p.title;
-    item.querySelector(".role").textContent = p.role;
-    item.querySelector(".role").hidden = !p.role;
-    item.querySelector(".facts").textContent = p.facts;
-    for (const n of p.slides) {
-      const img = document.createElement("img");
-      img.src = `assets/slides/${n}.jpg`;
-      img.alt = `${p.title} 작업물`;
-      img.loading = "lazy";
-      item.querySelector(".shots").append(img);
-    }
-    for (const link of p.links) {
-      const a = document.createElement("a");
-      const label = document.createElement("span");
-      a.className = "btn btn-xs";
-      label.textContent = link.label;
-      a.append(label);
-      external(a, link.url);
-      item.querySelector(".overview-links").append(a);
-    }
-    body.append(item);
+for (const item of MEDIA_ASSETS) {
+  const card = make("a", "asset");
+  const top = make("span", item.thumb ? "asset-top" : "asset-top is-icon");
+  if (item.thumb) {
+    const pic = make("img", "asset-pic");
+    pic.src = `${ASSETS}/thumbs/${item.thumb}.jpg`;
+    pic.alt = "";
+    pic.loading = "lazy";
+    top.append(pic);
   }
+  const icon = make("img", "asset-icon");
+  icon.src = `${ASSETS}/icons/${item.icon}.png`;
+  icon.alt = "";
+  top.append(icon);
+  card.append(top, make("em", "", item.kind), make("b", "", item.title));
+  external(card, item.url);
+  el("assets").append(card);
 }
 
-el("overview-open").addEventListener("click", () => {
-  if (!el("overview-body").children.length) buildOverview();
-  overview.showModal();
-  el("overview-body").scrollTop = 0;
-});
-el("overview-close").addEventListener("click", () => overview.close());
-overview.addEventListener("click", (e) => { if (e.target === overview) overview.close(); });
+/* pv: the round play button on the hero plays the project video */
+const pv = el("pv");
+const pvVideo = el("pv-video");
 
-// zoom popup: any work image (on the page or inside the overview) opens large, with zoom controls
+function stopPv() {
+  pvVideo.pause();
+  pvVideo.currentTime = 0;
+  showHero(heroIndex);
+}
+el("hero-play").addEventListener("click", () => {
+  pv.showModal();
+  clearInterval(heroTimer);
+  pvVideo.volume = 0.6;
+  pvVideo.play().catch(() => {});
+});
+// Esc closes the popup too, so the video is stopped on the close event as well as on the button
+pv.addEventListener("close", stopPv);
+el("pv-close").addEventListener("click", () => {
+  pv.close();
+  stopPv();
+});
+pv.addEventListener("click", (e) => {
+  if (e.target !== pv) return;
+  pv.close();
+  stopPv();
+});
+
+/* header: mark the section on screen */
+const navLinks = [...el("gnb-nav").querySelectorAll("a")];
+const spy = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      const id = entry.target.id === "detail" ? "project" : entry.target.id;
+      navLinks.forEach((a) => a.classList.toggle("is-on", a.getAttribute("href") === `#${id}`));
+    }
+  },
+  { rootMargin: "-45% 0px -50% 0px" },
+);
+document.querySelectorAll("main > section").forEach((section) => spy.observe(section));
+
+/* sections fade up the first time they come on screen */
+const reveal = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("is-in");
+      reveal.unobserve(entry.target);
+    }
+  },
+  { threshold: 0.12 },
+);
+document.querySelectorAll(".reveal").forEach((node) => reveal.observe(node));
+
+/* zoom: click a work picture to see it large; drag to move once it is larger than the screen */
 const zoom = el("zoom");
 const zoomImg = el("zoom-img");
-let zoomFit = 0; // width at which the whole image fits the screen (= 100%)
+const stage = el("zoom-stage");
+let zoomFit = 0;
 
 function setZoom(percent) {
   const value = Math.min(300, Math.max(50, percent));
   zoomImg.style.width = `${(zoomFit * value) / 100}px`;
   el("zoom-range").value = value;
   el("zoom-value").textContent = `${value}%`;
-  el("zoom-stage").classList.toggle("is-pannable", value > 100);
+  stage.classList.toggle("is-pannable", value > 100);
 }
 
 document.addEventListener("click", (e) => {
-  const img = e.target.closest(".work img, .overview-item .shots img");
+  const img = e.target.closest(".work > img, #a-img");
   if (!img) return;
   zoomImg.src = img.src;
   zoomImg.alt = img.alt;
-  zoomFit = Math.min(innerWidth * 0.96, innerHeight * 0.94 * (img.naturalWidth / img.naturalHeight));
-  setZoom(100);
   zoom.showModal();
+  const ratio = img.naturalWidth / img.naturalHeight || 16 / 9;
+  zoomFit = Math.min(window.innerWidth * 0.92, window.innerHeight * 0.88 * ratio);
+  setZoom(100);
 });
 el("zoom-range").addEventListener("input", (e) => setZoom(Number(e.target.value)));
 el("zoom-in").addEventListener("click", () => setZoom(Number(el("zoom-range").value) + 20));
 el("zoom-out").addEventListener("click", () => setZoom(Number(el("zoom-range").value) - 20));
 el("zoom-close").addEventListener("click", () => zoom.close());
 
-// above 100% the image can be dragged around; a drag never counts as a click on the backdrop
-const stage = el("zoom-stage");
 let pan = null;
 stage.addEventListener("pointerdown", (e) => {
   if (!stage.classList.contains("is-pannable") || e.button !== 0) return;

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정해양 — 2D & 3D Game Artist</title>
+<meta name="description" content="2D & 3D 게임 아티스트 정해양의 포트폴리오. 게임 아트, 캐릭터 애니메이션, UI, Unity 개발 작업을 모았습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=43">
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="#main"><span>Portfolio</span></a>
+  <p class="header-name">JoengHaeYang</p>
+  <div class="header-side">
+    <a class="header-pill" href="mailto:970626ls@naver.com">메일 보내기</a>
+  </div>
+</header>
+
+<main>
+  <section class="home" id="main" aria-label="메인">
+    <h1 class="sr-only">정해양 포트폴리오 — 2D &amp; 3D Game Artist</h1>
+
+    <nav class="banners" id="banners" aria-label="프로젝트 바로가기"></nav>
+
+    <div class="feature" id="feature">
+      <a class="feature-link" id="feature-link" target="_blank" rel="noopener">
+        <span class="feature-top"><b>Steam 발매작</b> <span id="feature-name"></span></span>
+        <img id="feature-img" src="../assets/thumbs/pixelchroma.jpg" alt="">
+      </a>
+      <button class="feature-nav is-prev" id="feature-prev" aria-label="이전 게임"></button>
+      <button class="feature-nav is-next" id="feature-next" aria-label="다음 게임"></button>
+    </div>
+
+    <button class="overview-open" id="overview-open"><span>프로젝트<br>한눈에 보기</span></button>
+  </section>
+
+  <section class="section profile" id="profile" aria-labelledby="profile-title">
+    <header class="title">
+      <h2 id="profile-title">Profile</h2><span class="title-ko">프로필</span>
+    </header>
+    <div class="profile-grid">
+      <div>
+        <p class="plate">2D &amp; 3D Game Artist</p>
+        <h3 class="profile-name">정해양</h3>
+        <p class="profile-role">앞서가는 아티스트</p>
+        <img class="profile-photo" src="../assets/profile.jpg" alt="정해양 프로필 사진" width="378" height="580">
+        <ul class="profile-contact">
+          <li><span>Email</span><a href="mailto:970626ls@naver.com">970626ls@naver.com</a></li>
+          <li><span>Phone</span><a href="tel:010-4550-5260">010-4550-5260</a></li>
+        </ul>
+      </div>
+      <div class="cards">
+        <article class="card timeline">
+          <div class="timeline-head"><h3>학력</h3><h3>경력</h3></div>
+          <ol>
+            <li><strong>영산대학교</strong><span>게임콘텐츠학과</span></li>
+            <li class="is-career"><strong>본코스메틱</strong><span>마케팅 주임</span></li>
+            <li><strong>디벨로켓</strong><span>AI를 활용한 메타버스 Unity 게임 부트캠프</span></li>
+            <li class="is-career"><strong>Pixel Chroma</strong><span>마케팅 담당</span></li>
+          </ol>
+        </article>
+        <article class="card tools">
+          <h3>사용 툴</h3>
+          <dl>
+            <dt>Art &amp; Design</dt>
+            <dd><span class="chip" style="--c:#31a8ff">Photoshop</span><span class="chip" style="--c:#9999ff">Premiere Pro</span><span class="chip" style="--c:#f5792a">Blender</span></dd>
+            <dt>Engine &amp; Dev</dt>
+            <dd><span class="chip" style="--c:#000000">Unity 6</span><span class="chip" style="--c:#512bd4">C#</span><span class="chip" style="--c:#5c2d91">Shader / HLSL</span><span class="chip" style="--c:#f05032">Git</span></dd>
+            <dt>Platform</dt>
+            <dd><span class="chip" style="--c:#000000">Steam</span><span class="chip" style="--c:#3ddc84">Android</span><span class="chip" style="--c:#0668e1">Meta Quest</span></dd>
+            <dt>AI-Assisted</dt>
+            <dd><span class="chip" style="--c:#d97757">Claude</span><span class="chip" style="--c:#412991">ChatGPT</span></dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section project" id="project" aria-labelledby="project-title">
+    <header class="title">
+      <h2 id="project-title">Project</h2><span class="title-ko">프로젝트</span>
+    </header>
+
+    <div class="tabs" id="project-tabs" role="tablist" aria-label="프로젝트 선택"></div>
+
+    <div class="stage" id="project-panel" role="tabpanel">
+      <div class="stage-art">
+        <img id="stage-img" src="../assets/thumbs/poltergeist.jpg" alt="">
+      </div>
+      <div class="stage-info">
+        <p class="plate" id="stage-tag"></p>
+        <h3 id="stage-title"></h3>
+        <p class="stage-role" id="stage-role"></p>
+        <dl class="meta" id="stage-meta"></dl>
+        <div class="stage-links" id="stage-links"></div>
+      </div>
+    </div>
+
+    <div class="works" id="project-works"></div>
+  </section>
+
+  <section class="section activity" id="activity" aria-labelledby="activity-title">
+    <header class="title">
+      <h2 id="activity-title">Activity</h2><span class="title-ko">대외활동</span>
+    </header>
+    <div class="tabs" id="activity-tabs" role="tablist" aria-label="활동 선택"></div>
+    <div class="works-head">
+      <p class="works-desc" id="activity-desc"></p>
+      <div class="works-links" id="activity-links"></div>
+    </div>
+    <div class="works" id="activity-works"></div>
+  </section>
+</main>
+
+<dialog class="overview" id="overview" aria-labelledby="overview-title">
+  <div class="overview-head">
+    <h2 id="overview-title">프로젝트 한눈에 보기</h2>
+    <button class="overview-close" id="overview-close" aria-label="닫기"></button>
+  </div>
+  <div class="overview-body" id="overview-body"></div>
+</dialog>
+
+<dialog class="zoom" id="zoom" aria-label="확대 이미지">
+  <div class="zoom-stage" id="zoom-stage"><img id="zoom-img" alt=""></div>
+  <button class="overview-close zoom-close" id="zoom-close" aria-label="닫기"></button>
+  <div class="zoom-bar">
+    <output id="zoom-value">100%</output>
+    <button id="zoom-out" aria-label="축소"></button>
+    <input id="zoom-range" type="range" min="50" max="300" step="10" value="100" aria-label="확대 비율">
+    <button id="zoom-in" class="is-plus" aria-label="확대"></button>
+  </div>
+</dialog>
+
+<a class="to-top" id="to-top" href="#main" aria-label="맨 위로 이동"><span aria-hidden="true">↑</span> TOP</a>
+
+<script src="../data.js?v=2"></script>
+<script src="main.js?v=45"></script>
+</body>
+</html>

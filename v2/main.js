@@ -200,7 +200,7 @@ for (const p of PROJECTS) {
 const MEDIA_ASSETS = [
   ...PROJECTS.flatMap((p) => p.links.filter((l) => l.url.includes("steampowered")).map((l) => ({ kind: "Steam", icon: "steam", thumb: p.key, title: `${p.title} 상점페이지`, url: l.url }))),
   ...HOTSPOTS[31].map((s, i) => ({ kind: "YouTube", icon: "youtube", thumb: i ? "media-channel" : "media-ads", title: s.label, url: s.url })),
-  { kind: "GitHub", icon: "github", title: "Ryukon97", url: "https://github.com/Ryukon97" },
+  { kind: "GitHub", icon: "github", thumb: "media-github", title: "Ryukon97", url: "https://github.com/Ryukon97" },
 ];
 for (const item of MEDIA_ASSETS) {
   const card = make("a", "asset");

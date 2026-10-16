@@ -199,7 +199,7 @@ for (const p of PROJECTS) {
 
 const MEDIA_ASSETS = [
   ...PROJECTS.flatMap((p) => p.links.filter((l) => l.url.includes("steampowered")).map((l) => ({ kind: "Steam", icon: "steam", title: `${p.title} 상점페이지`, url: l.url }))),
-  ...HOTSPOTS[27].map((s) => ({ kind: "YouTube", icon: "youtube", title: s.label, url: s.url })),
+  ...HOTSPOTS[31].map((s) => ({ kind: "YouTube", icon: "youtube", title: s.label, url: s.url })),
   { kind: "GitHub", icon: "github", title: "Ryukon97", url: "https://github.com/Ryukon97" },
 ];
 for (const item of MEDIA_ASSETS) {

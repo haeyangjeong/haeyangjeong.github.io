@@ -134,7 +134,7 @@ buildTabs(el("activity-tabs"), ACTIVITIES, (a) => {
   // the video tab also offers its YouTube links as buttons
   const links = el("activity-links");
   links.replaceChildren();
-  for (const link of a.key === "video" ? HOTSPOTS[27] : []) {
+  for (const link of a.key === "video" ? HOTSPOTS[31] : []) {
     const btn = document.createElement("a");
     const icon = document.createElement("img");
     const label = document.createElement("span");
@@ -222,7 +222,7 @@ function buildOverview() {
       role: "",
       facts: slashed(activity("video").desc),
       slides: activity("video").slides,
-      links: (HOTSPOTS[27] || []).map((s) => ({ label: s.label, url: s.url })),
+      links: (HOTSPOTS[31] || []).map((s) => ({ label: s.label, url: s.url })),
     },
   ];
   for (const p of entries) {
